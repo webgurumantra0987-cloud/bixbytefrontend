@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+
+/* Custom Scrollbar for Luxury Look */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 20px;
+}
+
+/* Fix for Safari/Chrome height issues */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d4af37 transparent;
+  -webkit-overflow-scrolling: touch;
+}

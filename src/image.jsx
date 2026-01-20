@@ -1,0 +1,1 @@
+export { default as companylogo } from "../src/assets/img/BIXBITECOMPANYLOGO.png";
