@@ -7,11 +7,11 @@ export const Services = () => {
   const [selectedService, setSelectedService] = useState(null);
 
   return (
-    <section className="py-10 bg-[#FAF9F6] selection:bg-[#d4af37] selection:text-white">
+    <section className="py-5 p bg-[#FAF9F6] selection:bg-[#d4af37] selection:text-white">
       <div className="max-w-[1540px] mx-auto px-6 lg:px-12">
         
         {/* Header Logic */}
-        <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6 border-b border-gray-200 pb-12">
+        <div className="mb-6 md:mb-8 flex flex-col md:flex-row justify-between items-end gap-6 border-b border-gray-200 ">
           <div className="max-w-2xl">
             <span className="text-[#d4af37] text-[10px] font-black uppercase tracking-[0.6em] mb-4 block">Our Expertise</span>
             <h2 className="text-[#1a1a1a] text-5xl md:text-6xl font-light italic font-serif leading-tight">

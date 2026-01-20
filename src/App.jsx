@@ -4,14 +4,21 @@ import Navbar from './components/layout/Navbar';
 import Home from './pages/Home';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import About from './pages/About';
+import Gallery from './pages/Gallery';
+import Contact from './pages/Contact';
+
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+
+
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -25,6 +32,9 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </Router>

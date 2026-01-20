@@ -5,11 +5,11 @@ import { ArrowUpRight } from 'lucide-react';
 
 export const AboutUs = () => {
   return (
-    <section className="py-24 bg-[#FAF9F6] overflow-hidden"> {/* Alabaster White Background */}
+    <section className="py-24 bg-[#FAF9F6] overflow-hidden"> 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
           
-          {/* Left Side: Image with refined borders */}
+          
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -24,14 +24,12 @@ export const AboutUs = () => {
                 className="w-full h-full object-cover brightness-105 hover:scale-105 transition-transform duration-1000"
               />
             </div>
-            {/* Minimalist Floating Tag */}
+         
             <div className="absolute -bottom-6 -right-6 bg-white p-8 shadow-xl border border-[#d4af37]/10 hidden xl:block">
               <p className="text-[#d4af37] text-3xl font-serif">15+</p>
               <p className="text-gray-400 text-[9px] font-bold uppercase tracking-widest mt-1 text-center">Design Awards</p>
             </div>
           </motion.div>
-
-          {/* Right Side: Content with reduced heading size */}
           <div className="lg:col-span-7 space-y-8">
             <div className="flex items-center gap-3">
               <span className="w-8 h-[1px] bg-[#d4af37]"></span>

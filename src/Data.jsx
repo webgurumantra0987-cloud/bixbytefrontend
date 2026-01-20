@@ -122,3 +122,35 @@ export const servicesExpertise = [
     fullDescription: "Creating destination experiences through architecture. We specialize in luxury resorts and boutique hotels where every square foot is designed for guest satisfaction."
   }
 ];
+
+
+
+  export const projects = [
+    // EXTERIOR - 12 ITEMS
+    { id: 1, title: "The Obsidian Villa", category: "Exterior", location: "Athens, Greece", year: "2024", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" },
+    { id: 2, title: "Azure Coast Estate", category: "Exterior", location: "Monaco", year: "2023", image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80" },
+    { id: 3, title: "Monolith Pavilion", category: "Exterior", location: "Oslo, Norway", year: "2024", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80" },
+    { id: 4, title: "Canyon Retreat", category: "Exterior", location: "Arizona, USA", year: "2022", image: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?auto=format&fit=crop&q=80" },
+    { id: 5, title: "Glass Horizon", category: "Exterior", location: "Dubai, UAE", year: "2025", image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80" },
+    { id: 6, title: "The Brutalist Box", category: "Exterior", location: "Berlin, Germany", year: "2023", image: "https://images.unsplash.com/photo-1513584684374-8bdb7489feef?auto=format&fit=crop&q=80" },
+    { id: 7, title: "Solaris Heights", category: "Exterior", location: "Malibu, USA", year: "2024", image: "https://images.unsplash.com/photo-1505843513577-22bb7d21ef45?auto=format&fit=crop&q=80" },
+    { id: 8, title: "Alpine Sanctuary", category: "Exterior", location: "Swiss Alps", year: "2023", image: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80" },
+    { id: 9, title: "Verdana Estate", category: "Exterior", location: "Tuscany, Italy", year: "2022", image: "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&q=80" },
+    { id: 10, title: "Zenith Tower", category: "Exterior", location: "Singapore", year: "2025", image: "https://images.unsplash.com/photo-1449156001437-3a1621dfbe69?auto=format&fit=crop&q=80" },
+    { id: 11, title: "The Pebble House", category: "Exterior", location: "Kyoto, Japan", year: "2024", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80" },
+    { id: 12, title: "Echo Canyon Residence", category: "Exterior", location: "Cape Town, SA", year: "2023", image: "https://images.unsplash.com/photo-1500313830540-7b6650a74fd0?auto=format&fit=crop&q=80" },
+
+    // INTERIOR - 12 ITEMS
+    { id: 13, title: "Marble Serenity", category: "Interior", location: "Milan, Italy", year: "2024", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80" },
+    { id: 14, title: "Velvet Executive", category: "Interior", location: "London, UK", year: "2023", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80" },
+    { id: 15, title: "Minimalist Loft", category: "Interior", location: "New York, USA", year: "2024", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&q=80" },
+    { id: 16, title: "Gold Leaf Suite", category: "Interior", location: "Paris, France", year: "2022", image: "https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?auto=format&fit=crop&q=80" },
+    { id: 17, title: "The Oak Library", category: "Interior", location: "Edinburgh, Scotland", year: "2025", image: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&q=80" },
+    { id: 18, title: "Art Deco Lounge", category: "Interior", location: "Miami, USA", year: "2023", image: "https://images.unsplash.com/photo-1616594116733-470081dd0067?auto=format&fit=crop&q=80" },
+    { id: 19, title: "Japandi Living", category: "Interior", location: "Tokyo, Japan", year: "2024", image: "https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&fit=crop&q=80" },
+    { id: 20, title: "Concrete Haven", category: "Interior", location: "Berlin, Germany", year: "2023", image: "https://images.unsplash.com/photo-1615876234586-44491fbd0f97?auto=format&fit=crop&q=80" },
+    { id: 21, title: "Azure Dining", category: "Interior", location: "Monaco", year: "2022", image: "https://images.unsplash.com/photo-1617806118233-18e16208a50a?auto=format&fit=crop&q=80" },
+    { id: 22, title: "Terracotta Kitchen", category: "Interior", location: "Seville, Spain", year: "2025", image: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&q=80" },
+    { id: 23, title: "Cloud Master Bed", category: "Interior", location: "Sydney, Australia", year: "2024", image: "https://images.unsplash.com/photo-1616060222521-38c11bd8e2bf?auto=format&fit=crop&q=80" },
+    { id: 24, title: "Brass & Stone Bath", category: "Interior", location: "Lisbon, Portugal", year: "2023", image: "https://images.unsplash.com/photo-1620626011761-9963d7521477?auto=format&fit=crop&q=80" },
+  ];

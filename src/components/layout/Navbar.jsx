@@ -4,7 +4,7 @@ import { ChevronDown, Menu, X, ArrowRight, Sparkles, Instagram, Linkedin, Plus, 
 import { interiorData, exteriorData } from "../../Data";
 import { companylogo } from "../../image";
 
-// --- YOUR ORIGINAL DESKTOP MEGAMENU (UNCHANGED) ---
+
 const DesktopMegaMenu = ({ data, isOpen }) => {
   return (
     <div className={`absolute left-0 top-full pt-4 w-full transition-all duration-500 z-[100] ${
@@ -55,7 +55,7 @@ const DesktopMegaMenu = ({ data, isOpen }) => {
   );
 };
 
-// --- MOBILE ACCORDION FOR SIDEBAR ---
+
 const MobileAccordion = ({ title, data, isOpen, toggle }) => {
   return (
     <div className="border-b border-white/5 py-4">
