@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, ArrowRight, Globe, Clock } from 'lucide-react';
  import { useForm } from "react-hook-form"
   import { ToastContainer, toast } from 'react-toastify';
-  const  axios = require('axios');
+ import axios from 'axios';
 const Contact = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
