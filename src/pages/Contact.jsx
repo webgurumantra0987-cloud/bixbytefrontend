@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, ArrowRight, Globe, Clock } from 'lucide-react';
  import { useForm } from "react-hook-form"
-
+  import { ToastContainer, toast } from 'react-toastify';
+  const  axios = require('axios');
 const Contact = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+
+
+   const apiUrl = 'https://apibixbyte.webgurumantra.com/api/';
 
    const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -11,12 +15,18 @@ const Contact = () => {
     setIsLoaded(true);
     window.scrollTo(0, 0);
   }, []);
+   const onSubmit =   async(data) => {
 
 
+     const response = await axios.post(`${apiUrl}/contact`, data);
+      
+       if (response.status === 201) {
+         toast.success("✅ Contact Submitted Successfully");
+       } else {
+         toast.error("❌ Contact Submission Failed");
+       }    
+    }
 
-   const onSubmit = (data) => {
-    console.log(data,"this is a cpntact data")
-  }
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen selection:bg-[#d4af37] selection:text-white font-sans">
@@ -98,6 +108,11 @@ const Contact = () => {
                     <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-focus-within:text-[#d4af37] transition-colors">Full Name</label>
                     <input type="text  " {...register("name",{required:true} ) } className="w-full bg-transparent border-b border-gray-200 py-3 focus:border-[#d4af37] outline-none transition-all text-[#1a1a1a]" placeholder="Ex. Julian Vane" />
                   </div>
+                   <div className="space-y-2 group">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-focus-within:text-[#d4af37] transition-colors">Full Name</label>
+                    <input type="number" {...register("phone",{required:true , maxLength:10} ) } className="w-full bg-transparent border-b border-gray-200 py-3 focus:border-[#d4af37] outline-none transition-all text-[#1a1a1a]" placeholder="Ex. Julian Vane" />
+                  </div>
+                  
                   
                   <div className="space-y-2 group">
                     <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-focus-within:text-[#d4af37] transition-colors">Email</label>
