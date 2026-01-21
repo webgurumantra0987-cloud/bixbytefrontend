@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, ArrowRight, Globe, Clock } from 'lucide-react';
+ import { useForm } from "react-hook-form"
 
 const Contact = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+
+   const { register, handleSubmit, formState: { errors } } = useForm();
 
   useEffect(() => {
     setIsLoaded(true);
     window.scrollTo(0, 0);
   }, []);
+
+
+
+   const onSubmit = (data) => {
+    console.log(data,"this is a cpntact data")
+  }
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen selection:bg-[#d4af37] selection:text-white font-sans">
@@ -84,20 +93,23 @@ const Contact = () => {
             {/* RIGHT SIDE: Form */}
             <div className="bg-white p-8 md:p-16 shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-black/5">
                <h3 className="text-2xl font-serif italic mb-10">Project Inquiry</h3>
-               <form className="space-y-8">
+               <form className="space-y-8"  onSubmit={handleSubmit(onSubmit)}>
                   <div className="space-y-2 group">
                     <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-focus-within:text-[#d4af37] transition-colors">Full Name</label>
-                    <input type="text" className="w-full bg-transparent border-b border-gray-200 py-3 focus:border-[#d4af37] outline-none transition-all text-[#1a1a1a]" placeholder="Ex. Julian Vane" />
+                    <input type="text  " {...register("name",{required:true} ) } className="w-full bg-transparent border-b border-gray-200 py-3 focus:border-[#d4af37] outline-none transition-all text-[#1a1a1a]" placeholder="Ex. Julian Vane" />
                   </div>
                   
                   <div className="space-y-2 group">
                     <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-focus-within:text-[#d4af37] transition-colors">Email</label>
-                    <input type="email" className="w-full bg-transparent border-b border-gray-200 py-3 focus:border-[#d4af37] outline-none transition-all text-[#1a1a1a]" placeholder="email@address.com" />
+                    <input type="email" {...register("email",{required:true ,pattern:{
+                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                         message: "invalid email address"
+                    }})  } className="w-full bg-transparent border-b border-gray-200 py-3 focus:border-[#d4af37] outline-none transition-all text-[#1a1a1a]" placeholder="email@address.com" />
                   </div>
 
                   <div className="space-y-2 group">
                     <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-focus-within:text-[#d4af37] transition-colors">Message</label>
-                    <textarea rows="4" className="w-full bg-transparent border-b border-gray-200 py-3 focus:border-[#d4af37] outline-none transition-all text-[#1a1a1a] resize-none" placeholder="Briefly describe your vision..."></textarea>
+                    <textarea rows="4"   {...register("message",{required:true} ) } className="w-full bg-transparent border-b border-gray-200 py-3 focus:border-[#d4af37] outline-none transition-all text-[#1a1a1a] resize-none" placeholder="Briefly describe your vision..."></textarea>
                   </div>
 
                   <button className="group w-full bg-[#1a1a1a] text-white py-6 flex items-center justify-center gap-4 text-[10px] font-black uppercase tracking-[0.4em] hover:bg-[#d4af37] transition-all duration-500">
@@ -108,6 +120,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+
 
       {/* --- GLOBAL PRESENCE --- */}
       <section className="py-24 bg-[#0a0a0a] text-white relative">
