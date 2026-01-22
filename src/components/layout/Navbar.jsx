@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Menu, X, ArrowRight, Sparkles, Instagram, Linkedin, Plus, Minus } from "lucide-react";
+import { ChevronDown, Menu, X, Sparkles, Plus, Minus } from "lucide-react";
 import { interiorData, exteriorData } from "../../Data";
 import { companylogo } from "../../image";
 
-
-const DesktopMegaMenu = ({ data, isOpen }) => {
+const DesktopMegaMenu = ({ data, isOpen, closeMenu }) => {
   return (
     <div className={`absolute left-0 top-full pt-4 w-full transition-all duration-500 z-[100] ${
       isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
@@ -24,7 +23,12 @@ const DesktopMegaMenu = ({ data, isOpen }) => {
                 <ul className="grid grid-cols-2 gap-x-6 gap-y-4">
                   {section.services.map((service, j) => (
                     <li key={j} className="relative group/item min-h-[32px]">
-                      <Link to="/contact" className="flex flex-col h-full">
+                      {/* MAPPING TO YOUR NEW LINK PATTERN */}
+                      <Link 
+                        to={`${service.link}`} 
+                        onClick={closeMenu}
+                        className="flex flex-col h-full"
+                      >
                         <div className="flex items-start gap-2">
                           <span className="text-[8.5px] text-gray-400 uppercase tracking-widest leading-relaxed group-hover/item:text-white transition-colors line-clamp-2">
                             {service.name}
@@ -55,8 +59,7 @@ const DesktopMegaMenu = ({ data, isOpen }) => {
   );
 };
 
-
-const MobileAccordion = ({ title, data, isOpen, toggle }) => {
+const MobileAccordion = ({ title, data, isOpen, toggle, closeSidebar }) => {
   return (
     <div className="border-b border-white/5 py-4">
       <button onClick={toggle} className="w-full flex justify-between items-center text-white text-2xl font-light italic font-serif">
@@ -69,7 +72,12 @@ const MobileAccordion = ({ title, data, isOpen, toggle }) => {
             <ul className="space-y-3 pl-2">
               {section.services.map((service, j) => (
                 <li key={j}>
-                  <Link to="/contact" className="text-gray-400 text-sm hover:text-white flex items-center gap-2">
+                  {/* MAPPING TO YOUR NEW LINK PATTERN */}
+                  <Link 
+                    to={`/service/${service.link}`} 
+                    onClick={closeSidebar}
+                    className="text-gray-400 text-sm hover:text-white flex items-center gap-2"
+                  >
                     <span className="w-1 h-1 bg-[#d4af37] rounded-full"></span> {service.name}
                   </Link>
                 </li>
@@ -96,7 +104,6 @@ const Navbar = ({ isScrolled }) => {
       <nav className={`fixed w-full z-[100] transition-all duration-700 ${isScrolled ? "bg-[#0f0f0f]/95 py-3 border-b border-white/5 shadow-2xl" : "bg-transparent py-8"}`}>
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex justify-between items-center relative">
           
-          {/* LOGO */}
           <Link to="/" className="flex items-center gap-4 shrink-0">
             <img src={companylogo} alt="Bixbite" className="h-10 lg:h-12 brightness-0 invert" />
             <div className="hidden md:flex flex-col border-l border-white/10 pl-4 uppercase font-bold text-white">
@@ -105,29 +112,29 @@ const Navbar = ({ isScrolled }) => {
             </div>
           </Link>
 
-          {/* DESKTOP MENU - Restoration of original logic */}
           <div className="hidden xl:flex items-center gap-2">
             <Link to="/" className="text-[10px] px-5 py-2 text-gray-400 font-bold uppercase tracking-widest hover:text-white transition-all">Home</Link>
             <Link to="/about" className="text-[10px] px-5 py-2 text-gray-400 font-bold uppercase tracking-widest hover:text-white transition-all">About Us</Link>
 
+            {/* Interior Mega Menu */}
             <div className="py-2" onMouseEnter={() => setActiveMenu('interior')} onMouseLeave={() => setActiveMenu(null)}>
               <button className={`flex items-center text-[10px] px-5 py-2 font-bold uppercase tracking-widest transition-colors ${activeMenu === 'interior' ? 'text-white' : 'text-gray-400'}`}>
                 Interior Services <ChevronDown size={10} className={`ml-2 transition-transform ${activeMenu === 'interior' ? 'rotate-180' : ''}`} />
               </button>
-              <DesktopMegaMenu data={interiorData} isOpen={activeMenu === 'interior'} />
+              <DesktopMegaMenu data={interiorData} isOpen={activeMenu === 'interior'} closeMenu={() => setActiveMenu(null)} />
             </div>
 
+            {/* Exterior Mega Menu */}
             <div className="py-2" onMouseEnter={() => setActiveMenu('exterior')} onMouseLeave={() => setActiveMenu(null)}>
               <button className={`flex items-center text-[10px] px-5 py-2 font-bold uppercase tracking-widest transition-colors ${activeMenu === 'exterior' ? 'text-white' : 'text-gray-400'}`}>
                 Exterior Services <ChevronDown size={10} className={`ml-2 transition-transform ${activeMenu === 'exterior' ? 'rotate-180' : ''}`} />
               </button>
-              <DesktopMegaMenu data={exteriorData} isOpen={activeMenu === 'exterior'} />
+              <DesktopMegaMenu data={exteriorData} isOpen={activeMenu === 'exterior'} closeMenu={() => setActiveMenu(null)} />
             </div>
 
             <Link to="/gallery" className="text-[10px] px-5 py-2 text-gray-400 font-bold uppercase tracking-widest hover:text-white transition-all">Gallery</Link>
           </div>
 
-          {/* CTA & MOBILE BUTTON */}
           <div className="flex items-center gap-6 shrink-0">
             <Link to="/contact" className="hidden lg:flex px-10 py-4 bg-[#d4af37] text-black text-[10px] font-black uppercase tracking-[0.3em] hover:bg-white transition-all">
               Enquire Now
@@ -151,8 +158,23 @@ const Navbar = ({ isScrolled }) => {
             <nav className="flex flex-col">
               <Link to="/" onClick={() => setIsSidebarOpen(false)} className="text-white text-2xl font-light italic font-serif py-4 border-b border-white/5">Home</Link>
               <Link to="/about" onClick={() => setIsSidebarOpen(false)} className="text-white text-2xl font-light italic font-serif py-4 border-b border-white/5">About Us</Link>
-              <MobileAccordion title="Interior Services" data={interiorData} isOpen={mobileExpanded === 'int'} toggle={() => setMobileExpanded(mobileExpanded === 'int' ? null : 'int')} />
-              <MobileAccordion title="Exterior Services" data={exteriorData} isOpen={mobileExpanded === 'ext'} toggle={() => setMobileExpanded(mobileExpanded === 'ext' ? null : 'ext')} />
+              
+              <MobileAccordion 
+                title="Interior Services" 
+                data={interiorData} 
+                isOpen={mobileExpanded === 'int'} 
+                toggle={() => setMobileExpanded(mobileExpanded === 'int' ? null : 'int')} 
+                closeSidebar={() => setIsSidebarOpen(false)}
+              />
+              
+              <MobileAccordion 
+                title="Exterior Services" 
+                data={exteriorData} 
+                isOpen={mobileExpanded === 'ext'} 
+                toggle={() => setMobileExpanded(mobileExpanded === 'ext' ? null : 'ext')} 
+                closeSidebar={() => setIsSidebarOpen(false)}
+              />
+
               <Link to="/gallery" onClick={() => setIsSidebarOpen(false)} className="text-white text-2xl font-light italic font-serif py-4 border-b border-white/5">Gallery</Link>
             </nav>
           </div>

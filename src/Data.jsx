@@ -1,40 +1,81 @@
 import { Building2, Layout, Home, Store, ShieldCheck, Paintbrush, Compass, HardHat } from "lucide-react";
 
-const getBadge = (index) => {
-  if (index === 0) return "Top Rated";
-  if (index === 2) return "Premium";
-  if (index === 10) return "Turnkey";
-  return null;
-};
+import { Ruler, Shield } from 'lucide-react'
+
+const getBadge = (index) => (index % 2 === 0 ? "Premium" : "Standard");
 
 export const interiorData = [
   {
     category: "Commercial",
     icon: Building2,
     services: [
-      "Space planning & layout optimization", "Office, showroom & institutional design", "Reception & waiting area design", "Workstation & cabin design", "False ceiling & lighting solutions", "Acoustic treatment", "Electrical & networking layout", "HVAC & fire safety coordination", "Material selection & finishing", "Brand-aligned interior concepts", "Project management & execution", "Compliance with commercial building norms"
-    ].map((s, i) => ({ name: s, badge: getBadge(i) }))
+      { name: "Space planning & layout optimization", link: "space-planning" },
+      { name: "Office, showroom & institutional design", link: "office-design" },
+      { name: "Reception & waiting area design", link: "reception-design" },
+      { name: "Workstation & cabin design", link: "workstation-design" },
+      { name: "False ceiling & lighting solutions", link: "lighting-solutions" },
+      { name: "Acoustic treatment", link: "acoustic-treatment" },
+      { name: "Electrical & networking layout", link: "electrical-networking" },
+      { name: "HVAC & fire safety coordination", link: "hvac-safety" },
+      { name: "Material selection & finishing", link: "material-selection" },
+      { name: "Brand-aligned interior concepts", link: "brand-interiors" },
+      { name: "Project management & execution", link: "project-management" },
+      { name: "Compliance with commercial building norms", link: "commercial-compliance" }
+    ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
     category: "Corporate",
     icon: Layout,
     services: [
-      "Corporate space planning", "Ergonomic workstation design", "CEO cabin & management offices", "Boardroom & conference room design", "Corporate branding integration", "Modular furniture solutions", "Smart lighting & automation", "Soundproofing & acoustics", "IT, AV & video conferencing setup", "Sustainable & green interiors", "Turnkey project execution", "AMC & post-handover support"
-    ].map((s, i) => ({ name: s, badge: getBadge(i) }))
+      { name: "Corporate space planning", link: "corporate-planning" },
+      { name: "Ergonomic workstation design", link: "ergonomic-design" },
+      { name: "CEO cabin & management offices", link: "executive-offices" },
+      { name: "Boardroom & conference room design", link: "conference-rooms" },
+      { name: "Corporate branding integration", link: "corporate-branding" },
+      { name: "Modular furniture solutions", link: "modular-furniture" },
+      { name: "Smart lighting & automation", link: "smart-automation" },
+      { name: "Soundproofing & acoustics", link: "corporate-acoustics" },
+      { name: "IT, AV & video conferencing setup", link: "it-av-setup" },
+      { name: "Sustainable & green interiors", link: "green-interiors" },
+      { name: "Turnkey project execution", link: "turnkey-execution" },
+      { name: "AMC & post-handover support", link: "amc-support" }
+    ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
     category: "Residential",
     icon: Home,
     services: [
-      "Home interior concept & theme design", "Living room & bedroom interiors", "Modular kitchen design", "Wardrobe & storage solutions", "False ceiling & decorative lighting", "Electrical & plumbing layout", "Furniture design & customization", "Space-saving solutions", "Vastu-compliant design", "Material & color selection", "Turnkey home interior execution", "Budget-based customization"
-    ].map((s, i) => ({ name: s, badge: getBadge(i) }))
+      { name: "Home interior concept & theme design", link: "home-themes" },
+      { name: "Living room & bedroom interiors", link: "room-interiors" },
+      { name: "Modular kitchen design", link: "modular-kitchen" },
+      { name: "Wardrobe & storage solutions", link: "storage-solutions" },
+      { name: "False ceiling & decorative lighting", link: "residential-lighting" },
+      { name: "Electrical & plumbing layout", link: "residential-utilities" },
+      { name: "Furniture design & customization", link: "custom-furniture" },
+      { name: "Space-saving solutions", link: "space-saving" },
+      { name: "Vastu-compliant design", link: "vastu-interiors" },
+      { name: "Material & color selection", link: "color-consultancy" },
+      { name: "Turnkey home interior execution", link: "home-turnkey" },
+      { name: "Budget-based customization", link: "budget-interiors" }
+    ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
     category: "Retail",
     icon: Store,
     services: [
-      "Retail space planning", "Customer flow & layout design", "Display units & shelving design", "Visual merchandising support", "Lighting for product highlighting", "Branding & signage integration", "Cash counter & storage planning", "Durable material selection", "Shopfront & façade design", "Mall & high-street compliance", "Fast-track execution", "Cost-effective retail solutions"
-    ].map((s, i) => ({ name: s, badge: getBadge(i) }))
+      { name: "Retail space planning", link: "retail-planning" },
+      { name: "Customer flow & layout design", link: "customer-flow" },
+      { name: "Display units & shelving design", link: "display-units" },
+      { name: "Visual merchandising support", link: "merchandising" },
+      { name: "Lighting for product highlighting", link: "retail-lighting" },
+      { name: "Branding & signage integration", link: "retail-signage" },
+      { name: "Cash counter & storage planning", link: "retail-storage" },
+      { name: "Durable material selection", link: "retail-materials" },
+      { name: "Shopfront & façade design", link: "shopfront-design" },
+      { name: "Mall & high-street compliance", link: "mall-compliance" },
+      { name: "Fast-track execution", link: "fast-track-retail" },
+      { name: "Cost-effective retail solutions", link: "budget-retail" }
+    ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   }
 ];
 
@@ -43,34 +84,75 @@ export const exteriorData = [
     category: "Commercial Exterior",
     icon: ShieldCheck,
     services: [
-      "Building façade design & elevation", "Exterior space planning", "Architectural theme development", "Glass, ACP, stone & cladding design", "Entrance & frontage design", "Outdoor lighting & façade illumination", "Signage & branding integration", "Weather-resistant material selection", "Structural coordination", "Energy-efficient solutions", "Fire safety & building compliance", "Project execution & supervision"
-    ].map((s, i) => ({ name: s, badge: getBadge(i) }))
+      { name: "Building façade design & elevation", link: "building-facade" },
+      { name: "Exterior space planning", link: "exterior-planning" },
+      { name: "Architectural theme development", link: "architectural-theme" },
+      { name: "Glass, ACP, stone & cladding design", link: "cladding-design" },
+      { name: "Entrance & frontage design", link: "entrance-design" },
+      { name: "Outdoor lighting & façade illumination", link: "facade-lighting" },
+      { name: "Signage & branding integration", link: "exterior-branding" },
+      { name: "Weather-resistant material selection", link: "weatherproof-materials" },
+      { name: "Structural coordination", link: "structural-coordination" },
+      { name: "Energy-efficient solutions", link: "energy-solutions" },
+      { name: "Fire safety & building compliance", link: "exterior-compliance" },
+      { name: "Project execution & supervision", link: "exterior-execution" }
+    ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
     category: "Corporate Exterior",
     icon: Paintbrush,
     services: [
-      "Corporate identity-based exterior design", "Modern façade & elevation planning", "Glass curtain wall systems", "ACP & metal façade solutions", "Corporate signage & logo placement", "Entry & drop-off zone design", "Landscape & outdoor seating integration", "Architectural night lighting", "Green building features", "Corporate safety compliance", "Turnkey exterior execution", "Façade maintenance planning"
-    ].map((s, i) => ({ name: s, badge: getBadge(i) }))
+      { name: "Corporate identity-based exterior design", link: "corporate-identity" },
+      { name: "Modern façade & elevation planning", link: "corporate-facade" },
+      { name: "Glass curtain wall systems", link: "glass-curtain-walls" },
+      { name: "ACP & metal façade solutions", link: "metal-facade" },
+      { name: "Corporate signage & logo placement", link: "corporate-signage" },
+      { name: "Entry & drop-off zone design", link: "corporate-entry" },
+      { name: "Landscape & outdoor seating integration", link: "corporate-landscape" },
+      { name: "Architectural night lighting", link: "corporate-night-lighting" },
+      { name: "Green building features", link: "green-building" },
+      { name: "Corporate safety compliance", link: "corporate-safety" },
+      { name: "Turnkey exterior execution", link: "corporate-turnkey" },
+      { name: "Façade maintenance planning", link: "facade-maintenance" }
+    ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
     category: "Residential Exterior",
     icon: Compass,
     services: [
-      "Home elevation & façade design", "Modern or traditional architectural style", "Balcony, terrace & porch design", "Boundary wall & gate design", "Exterior paint & texture", "Outdoor & garden lighting", "Landscape & driveway planning", "Weatherproof materials", "Vastu-compliant exterior planning", "Waterproofing & drainage", "Budget-based exterior design", "Site execution & supervision"
-    ].map((s, i) => ({ name: s, badge: getBadge(i) }))
+      { name: "Home elevation & façade design", link: "home-elevation" },
+      { name: "Modern or traditional architectural style", link: "architectural-styles" },
+      { name: "Balcony, terrace & porch design", link: "balcony-design" },
+      { name: "Boundary wall & gate design", link: "boundary-design" },
+      { name: "Exterior paint & texture", link: "exterior-finishes" },
+      { name: "Outdoor & garden lighting", link: "garden-lighting" },
+      { name: "Landscape & driveway planning", link: "driveway-planning" },
+      { name: "Weatherproof materials", link: "res-weatherproof" },
+      { name: "Vastu-compliant exterior planning", link: "vastu-exterior" },
+      { name: "Waterproofing & drainage", link: "waterproofing" },
+      { name: "Budget-based exterior design", link: "budget-exterior" },
+      { name: "Site execution & supervision", link: "site-supervision" }
+    ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
     category: "Retail Exterior",
     icon: Store,
     services: [
-      "Retail shopfront & façade design", "High-visibility branding", "Window display & glazing design", "Customer entry planning", "Attractive exterior lighting", "ACP, glass & metal finishes", "Mall & authority compliance", "Low-maintenance materials", "Exterior visual merchandising", "Fast-track execution", "Cost-effective solutions", "Façade upgrade support"
-    ].map((s, i) => ({ name: s, badge: getBadge(i) }))
+      { name: "Retail shopfront & façade design", link: "retail-facade" },
+      { name: "High-visibility branding", link: "retail-visibility" },
+      { name: "Window display & glazing design", link: "window-glazing" },
+      { name: "Customer entry planning", link: "retail-entry" },
+      { name: "Attractive exterior lighting", link: "retail-exterior-lighting" },
+      { name: "ACP, glass & metal finishes", link: "retail-finishes" },
+      { name: "Mall & authority compliance", link: "retail-compliance" },
+      { name: "Low-maintenance materials", link: "retail-maintenance" },
+      { name: "Exterior visual merchandising", link: "retail-exterior-merch" },
+      { name: "Fast-track execution", link: "retail-fast-track" },
+      { name: "Cost-effective solutions", link: "retail-budget" },
+      { name: "Façade upgrade support", link: "facade-upgrade" }
+    ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   }
 ];
-
-
-
 
 export const servicesExpertise = [
   { 
@@ -154,3 +236,40 @@ export const servicesExpertise = [
     { id: 23, title: "Cloud Master Bed", category: "Interior", location: "Sydney, Australia", year: "2024", image: "https://images.unsplash.com/photo-1616060222521-38c11bd8e2bf?auto=format&fit=crop&q=80" },
     { id: 24, title: "Brass & Stone Bath", category: "Interior", location: "Lisbon, Portugal", year: "2023", image: "https://images.unsplash.com/photo-1620626011761-9963d7521477?auto=format&fit=crop&q=80" },
   ];
+
+
+   export const processItems = [
+    { 
+      icon: <Ruler size={20} />, 
+      title: "Site Analysis", 
+      description: "Detailed measurement and structural assessment to understand the unique constraints of your space." 
+    },
+    { 
+      icon: <Paintbrush size={20} />, 
+      title: "Design Concept", 
+      description: "Creating immersive 3D visualizations and material moodboards that align with your brand identity." 
+    },
+    { 
+      icon: <Shield size={20} />, 
+      title: "Execution", 
+      description: "Full turnkey management and rigorous quality control to ensure the vision is built to perfection." 
+    },
+  ];
+
+   export const spaceFAQ = [
+    { 
+      q: "How long does a spatial audit take?", 
+      a: "Typically 5-7 business days. We conduct a thorough analysis of site constraints, structural loads, and circulation requirements." 
+    },
+    { 
+      q: "Is Vastu compliant design standard?", 
+      a: "Yes. Our lead architects are trained in Vastu Shastra to ensure your layout promotes positive energy flow and directional harmony." 
+    },
+    { 
+      q: "Do you provide 3D walkthroughs?", 
+      a: "Every project includes a high-fidelity 3D volume study. This helps you visualize the scale and proportions before we begin execution." 
+    }
+  ];
+
+
+ 
