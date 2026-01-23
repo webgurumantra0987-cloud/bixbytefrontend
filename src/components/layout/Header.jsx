@@ -15,30 +15,32 @@ const Header = ({ isScrolled }) => {
         >
           <div className="max-w-[1540px] mx-auto flex justify-between items-center">
             {/* Contact Info */}
-            <div className="flex items-center gap-8">
+             <div className="flex items-center gap-8">
               <a href="mailto:Abc@BIXBITE.in" className="flex items-center gap-2 group">
-                <Mail size={12} className="text-[#d4af37] group-hover:scale-110 transition-transform" />
+                {/* Changed to Brand Olive Green */}
+                <Mail size={12} className="text-[#828a1c] group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] text-gray-400 uppercase tracking-[0.2em] group-hover:text-white transition-colors">
                   Abc@BIXBITE.in
                 </span>
               </a>
               <a href="tel:+91987654321" className="flex items-center gap-2 group">
-                <Phone size={12} className="text-[#d4af37] group-hover:scale-110 transition-transform" />
+                {/* Changed to Brand Olive Green */}
+                <Phone size={12} className="text-[#828a1c] group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] text-gray-400 uppercase tracking-[0.2em] group-hover:text-white transition-colors">
                   +91 987654321
                 </span>
               </a>
             </div>
 
-            {/* Socials & Branding */}
-            <div className="flex items-center gap-6 text-gray-500">
+           <div className="flex items-center gap-6 text-gray-500">
               <div className="flex gap-4">
-                <Facebook size={14} className="hover:text-[#d4af37] cursor-pointer transition-colors" />
-                <Instagram size={14} className="hover:text-[#d4af37] cursor-pointer transition-colors" />
-                <Linkedin size={14} className="hover:text-[#d4af37] cursor-pointer transition-colors" />
+                <Facebook size={14} className="hover:text-[#828a1c] cursor-pointer transition-colors" />
+                <Instagram size={14} className="hover:text-[#828a1c] cursor-pointer transition-colors" />
+                <Linkedin size={14} className="hover:text-[#828a1c] cursor-pointer transition-colors" />
               </div>
               <div className="h-3 w-[1px] bg-white/10 mx-1" />
-              <span className="text-[9px] text-[#d4af37] font-bold uppercase tracking-[0.3em]">Est. 2026</span>
+              {/* Changed to Brand Olive Green */}
+              <span className="text-[9px] text-[#828a1c] font-black uppercase tracking-[0.4em]">Est. 2026</span>
             </div>
           </div>
         </motion.div>
@@ -48,3 +50,6 @@ const Header = ({ isScrolled }) => {
 };
 
 export default Header;
+
+
+

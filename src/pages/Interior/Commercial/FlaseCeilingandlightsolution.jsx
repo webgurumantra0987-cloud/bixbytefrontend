@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { 
   Sun, Moon, Layers, Maximize, 
   Lightbulb, Zap, Sparkles, Eye,
-  Layout, ShieldCheck
+  Layout, ShieldCheck, Ruler, Thermometer
 } from 'lucide-react';
 
 // Common Components
@@ -11,9 +11,6 @@ import ServiceFeatureCards from '../../../components/common/ServiceFeatureCards'
 import ServiceCTA from '../../../components/common/ServiceCTA';
 import FAQSection from '../../../components/common/FAQSection';
 
-// Data
-import { processItems } from '../../../Data';
-
 const FlaseCeilingandlightsolution = () => {
   
   useEffect(() => {
@@ -21,7 +18,7 @@ const FlaseCeilingandlightsolution = () => {
   }, []);
 
   return (
-    <div className="bg-[#FAF9F6] selection:bg-[#d4af37] selection:text-white">
+    <div className="bg-[#FAF9F6] selection:bg-[#828a1c] selection:text-white">
       
       {/* 1. HERO: THE FIFTH WALL */}
       <HeroSection 
@@ -31,129 +28,181 @@ const FlaseCeilingandlightsolution = () => {
         backgroundImage="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=2000&auto=format&fit=crop"
       />
 
-      {/* 2. THE LUMINANCE PHILOSOPHY (300 Words Content) */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          <div className="space-y-8 text-gray-500 text-lg leading-relaxed">
-            <span className="text-[#d4af37] text-[10px] font-black uppercase tracking-[0.5em] block">The Fifth Wall</span>
-            <h2 className="text-5xl font-serif italic text-[#1a1a1a] leading-tight">Sculpting Space <br /> with Light.</h2>
-            <p>
-              In premium interior architecture, the ceiling is often referred to as the "Fifth Wall"—the most expansive canvas for defining a room's character. At Bixbite, our <strong>False Ceiling and Lighting Solutions</strong> are engineered to harmonize structural aesthetics with physiological comfort. We don't just hide wires; we create vertical interest that directs the eye and defines functional zones within an open plan.
-            </p>
-            <p>
-              Our lighting design follows a <strong>Tri-Layer approach</strong>: Ambient, Task, and Accent. By utilizing high-CRI (Color Rendering Index) LED technology and automated dimming systems, we ensure that your space adapts to the time of day. For commercial offices, we focus on glare reduction and uniform lux levels to prevent eye strain, while for luxury showrooms, we use "Dramatic Spotlight Contrast" to focus customer attention on key products.
+      {/* SECTION 1: THE PHILOSOPHY OF THE FIFTH WALL */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">01 — Perspective</span>
+            <h2 className="text-4xl md:text-5xl font-serif italic text-[#1a1a1a]">Sculpting the <span className="text-[#828a1c]">Fifth Wall.</span></h2>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              In premium interior architecture, the ceiling is the most expansive canvas for defining a room's character. At Bixbite, our <strong>False Ceiling and Lighting Solutions</strong> are engineered to harmonize structural aesthetics with physiological comfort. We don't just hide electrical conduits; we create vertical interest that directs the eye and defines functional zones. From monolithic gypsum spans to intricate modular systems, we treat the ceiling as a structural instrument for light and sound.
             </p>
           </div>
-          <div className="relative pt-12">
-            <div className="aspect-[3/4] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=1500&auto=format&fit=crop" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Modern Lighting" />
-            </div>
-            <div className="absolute top-0 right-0 bg-[#d4af37] p-12 text-black max-w-xs hidden md:block">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] mb-4">Lux Standard</p>
-                <p className="text-sm font-bold leading-relaxed uppercase tracking-widest">Architectural precision in every lumen. We design for 500+ LUX in task areas.</p>
-            </div>
+          <div className="aspect-video bg-gray-100 overflow-hidden shadow-2xl relative group">
+            <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=1500&auto=format&fit=crop" alt="Modern Ceiling Design" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 border-[20px] border-white/10 pointer-events-none"></div>
           </div>
         </div>
       </section>
 
-      {/* 3. LIGHTING LAYERS VISUALIZATION (Interactive Grid) */}
-      <section className="py-24 bg-white border-y border-black/5">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-px bg-black/10 border border-black/10">
-          {[
-            { title: "Gypsum & POP", icon: <Layers />, desc: "Seamless, monolithic finishes for minimalist luxury and clean coves." },
-            { title: "Grid & Modular", icon: <Layout />, desc: "Acoustic-integrated ceiling tiles for high-occupancy institutional zones." },
-            { title: "Smart Automation", icon: <Zap />, desc: "DALI and KNX integrated lighting controls for energy-saving automation." }
-          ].map((item, i) => (
-            <div key={i} className="bg-white p-12 group hover:bg-[#1a1a1a] transition-all duration-700">
-              <div className="text-[#d4af37] mb-8 group-hover:scale-110 transition-transform">{item.icon}</div>
-              <h4 className="text-[12px] font-black uppercase tracking-widest mb-4 group-hover:text-white">{item.title}</h4>
-              <p className="text-xs text-gray-400 group-hover:text-gray-500 leading-loose">{item.desc}</p>
-            </div>
-          ))}
+      {/* SECTION 2: THE TRI-LAYER LIGHTING PROTOCOL */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto bg-white border-y border-gray-100">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 aspect-square bg-gray-50 overflow-hidden shadow-xl">
+             <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&q=80" alt="Layered Lighting Design" className="w-full h-full object-cover" />
+          </div>
+          <div className="order-1 lg:order-2 space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">02 — Luminescence</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">The Tri-Layer <span className="text-[#6b4411]">Hierarchy.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              Effective illumination is never accidental. We employ a <strong>Tri-Layer approach</strong>: Ambient, Task, and Accent. Ambient lighting provides the base "wash" of the room, Task lighting ensures productivity in work zones without glare, and Accent lighting highlights architectural features or artworks. By balancing these three layers, we eliminate flat, uninspiring spaces and create a dynamic environment that feels alive and textured.
+            </p>
+            
+          </div>
         </div>
       </section>
 
-      {/* 4. THE SPECTRUM CHART (Technical Data) */}
-      <section className="py-20 bg-[#1a1a1a] text-white overflow-hidden">
+      {/* SECTION 3: CIRCADIAN SYSTEM INTEGRATION */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">03 — Wellness</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Circadian <span className="text-[#828a1c]">Rythms.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              Human biology is inextricably linked to the sun’s spectrum. Our <strong>Human-Centric Lighting</strong> systems utilize automated color temperature tuning (2700K to 6500K). In the morning, the system emits a crisp, blue-enriched light to stimulate cortisol and focus. In the evening, it transitions to a warm, amber glow to support melatonin production. This "Natural Sync" technology reduces office fatigue and enhances occupant well-veing in spaces with limited window access.
+            </p>
+          </div>
+          <div className="aspect-video bg-gray-200 shadow-2xl overflow-hidden p-12 flex items-center justify-center">
+             <div className="relative w-full h-full border border-[#828a1c]/20 flex items-center justify-center">
+                <Sun className="text-[#828a1c] w-20 h-20 absolute animate-pulse" />
+                <Moon className="text-[#6b4411] w-20 h-20 opacity-20" />
+             </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* SECTION 4: ACOUSTIC CEILING ENGINEERING */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto bg-[#1a1a1a] text-white overflow-hidden relative">
+        <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+          <div className="order-2 lg:order-1 aspect-video border border-white/10 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?auto=format&fit=crop&q=80" alt="Acoustic Ceiling Tiles" className="w-full h-full object-cover opacity-60" />
+          </div>
+          <div className="order-1 lg:order-2 space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">04 — Physics</span>
+            <h3 className="text-4xl font-serif italic">The Sonic <span className="text-[#828a1c]">Absorber.</span></h3>
+            <p className="text-gray-400 leading-relaxed font-light text-lg">
+              Ceilings are the primary reflectors of sound. To manage reverberation, we integrate <strong>NRC-rated (Noise Reduction Coefficient)</strong> materials directly into our ceiling designs. Whether utilizing perforated gypsum, mineral wool clouds, or baffle systems, we ensure the ceiling works as a giant acoustic sponge. This is critical for open-plan offices and hospitality venues where speech intelligibility and noise control are paramount for a premium user experience.
+            </p>
+            
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: SMART AUTOMATION & DALI CONTROLS */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">05 — Intelligence</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Digital <span className="text-[#828a1c]">Dimming.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              Precision control is the hallmark of luxury lighting. We implement <strong>DALI (Digital Addressable Lighting Interface)</strong> and KNX protocols to allow for individual fixture control. This enables "Scene Management"—pre-programmed lighting moods for meetings, presentations, or evening events. By integrating occupancy sensors and daylight harvesting, our lighting layouts reduce wasted energy, automatically dimming fixtures in unoccupied zones or when natural sunlight is abundant.
+            </p>
+          </div>
+          <div className="aspect-[4/3] bg-gray-200 overflow-hidden shadow-2xl">
+             <img src="https://images.unsplash.com/photo-1558000593-f796546f0c0d?auto=format&fit=crop&q=80" alt="Smart Lighting Control Panel" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: MATERIALITY: GYPSUM TO STRETCH FABRIC */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto bg-white">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 aspect-video shadow-xl overflow-hidden">
+             <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80" alt="Stretch Fabric Ceiling" className="w-full h-full object-cover" />
+          </div>
+          <div className="order-1 lg:order-2 space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">06 — Surfaces</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Seamless <span className="text-[#6b4411]">Expansion.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              The choice of ceiling material defines the visual volume of a space. We specialize in <strong>Monolithic Gypsum</strong> for a minimalist, clean-line look, and <strong>Stretch PVC Ceilings</strong> for a high-gloss, futuristic reflection. For industrial-chic environments, we design "Open-Plenum" layouts where structural elements and black-painted conduits are exposed but curated, using suspended track lighting to anchor the visual plane.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: COVE LIGHTING & INDIRECT ILLUMINATION */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">07 — Shadow Play</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Floating <span className="text-[#828a1c]">Architecture.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              To create a sense of height and weightlessness, we utilize <strong>Cove Lighting</strong>. By hiding high-output LED strips within ceiling recesses, we bounce light off the upper vertical surface, creating a "Halo Effect" that makes the ceiling appear to float. This indirect illumination reduces harsh shadows and creates a soft, luxurious glow that is far more comfortable for long-term occupancy than direct downlighting.
+            </p>
+          </div>
+          <div className="aspect-video bg-[#0f1108] p-4 border border-[#828a1c]/20 flex items-center justify-center">
+             <div className="w-full h-[1px] bg-[#828a1c] shadow-[0_0_20px_#828a1c]"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: TECHNICAL HANDOVER & LUX AUDIT */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto bg-[#FAF9F6]">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 aspect-square max-h-[500px] overflow-hidden shadow-2xl">
+             <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80" alt="Light Measurement Audit" className="w-full h-full object-cover" />
+          </div>
+          <div className="order-1 lg:order-2 space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">08 — Delivery</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Forensic <span className="text-[#828a1c]">Lux Mapping.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              Our process concludes with a technical <strong>Lux Audit</strong>. We use digital light meters to verify that task areas meet international standards (e.g., 500 Lux for workstations). We calibrate every dimmer and verify the <strong>CRI (Color Rendering Index)</strong> of installed fixtures to ensure your brand colors and materials look exactly as intended. With Bixbite, you receive a certified lighting environment that is as precise as it is beautiful.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* REUSABLE DATA STRIP */}
+      <section className="py-20 bg-white border-y border-black/5">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-between gap-12">
           {[
-            { label: "Color Temp", val: "3000K - 6000K" },
-            { label: "Rendering Index", val: "CRI 95+" },
-            { label: "Efficiency", val: "140 Lm/W" },
-            { label: "Standards", val: "ASHRAE 90.1" }
+            { label: "CRI Rating", val: "95+" },
+            { label: "Color Temp", val: "2700K - 6500K" },
+            { label: "NRC Rating", val: "0.85+" },
+            { label: "Efficiency", val: "140 Lm/W" }
           ].map((kpi, i) => (
             <div key={i} className="text-center md:text-left">
-              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 mb-2">{kpi.label}</p>
-              <p className="text-3xl font-serif italic text-[#d4af37]">{kpi.val}</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-2">{kpi.label}</p>
+              <p className="text-3xl font-serif italic text-[#828a1c]">{kpi.val}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 5. REUSABLE FEATURE CARDS (Product Focus) */}
-      <ServiceFeatureCards 
-        title="Ceiling Engineering"
-        subtitle="Structural Aesthetics"
-        items={[
-            { icon: <Maximize size={20} />, title: "Cove & Indirect Light", description: "Floating ceiling designs that provide soft, shadow-free illumination." },
-            { icon: <Lightbulb size={20} />, title: "Magnetic Track Lighting", description: "Versatile, movable lighting fixtures for dynamic showroom environments." },
-            { icon: <Sparkles size={20} />, title: "Stretch Ceilings", description: "High-gloss or translucent fabric finishes for a futuristic, seamless look." }
-        ]} 
-      />
-
-      {/* 6. EDITORIAL SHOWCASE (Verticality) */}
-      <section className="py-32 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-8 aspect-video overflow-hidden">
-             <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?q=80&w=2000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Architectural Lighting" />
-          </div>
-          <div className="lg:col-span-4 lg:pl-10">
-            <Eye className="text-[#d4af37] mb-6 w-10 h-10" />
-            <h3 className="text-4xl font-serif italic text-[#1a1a1a] mb-6">Visual Comfort First.</h3>
-            <p className="text-gray-500 mb-8 leading-relaxed">
-              We specialize in "Circadian Lighting"—systems that adjust color temperature automatically to support the human body's natural clock, increasing energy in the morning and promoting calm in the evening.
-            </p>
-            <ul className="space-y-4">
-              {['Flicker-Free Drivers', 'Glare Cut-off Fixtures', 'Sustainable LED Arrays'].map(item => (
-                <li key={item} className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-black">
-                   <div className="w-6 h-[1px] bg-[#d4af37]" /> {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. REUSABLE PROCESS */}
-      <ServiceFeatureCards 
-        title="Illumination Path"
-        subtitle="Strategy"
-        items={processItems} 
-      />
-
-      {/* 8. FAQ SECTION (REUSABLE) */}
+      {/* REUSABLE FAQS */}
       <FAQSection 
         title="Lighting & Ceiling FAQs"
         items={[
-            { q: "Is a false ceiling mandatory for LED lighting?", a: "Not mandatory, but it provides the necessary cavity for recessed fixtures and concealment of electrical conduits." },
-            { q: "How long does a gypsum ceiling installation take?", a: "A standard 1000 sq.ft office space typically takes 10-14 days for framing, boarding, and finishing." }
+            { q: "Can smart lighting be retrofitted into existing ceilings?", a: "Yes, we use wireless protocols like Zigbee or Bluetooth Mesh to integrate smart controls without tearing down existing structures." },
+            { q: "What is the fire rating of your ceiling materials?", a: "We exclusively use Class-A fire-rated gypsum and mineral wool that meet international safety norms for commercial occupancy." }
         ]} 
       />
 
-      {/* 9. THE QUALITY BANNER */}
-      <section className="py-20 bg-[#FAF9F6] border-t border-black/5 opacity-40 grayscale flex justify-center gap-16 overflow-hidden">
-        {['Energy Star Certified', 'Class-A Fire Rated', 'VOC-Free Materials'].map(t => (
-            <span key={t} className="text-[10px] font-black uppercase tracking-[0.4em] whitespace-nowrap">{t}</span>
-        ))}
-      </section>
-
-      {/* 10. REUSABLE CTA */}
+      {/* FINAL CTA */}
       <ServiceCTA 
-        title="Light up your brand's potential."
-        description="Schedule a luxury lighting consultation to redefine your ceiling's architectural impact."
-        buttonText="Book Site Audit"
+        title="Illuminate your architectural vision."
+        description="Book a technical lighting audit to redefine your space's vertical impact."
+        buttonText="Get Lighting Audit"
         link="/contact"
       />
+
+      {/* TRUST STRIP */}
+      <section className="py-16 bg-[#FAF9F6] border-t border-black/5 flex justify-center gap-12 overflow-hidden opacity-40 grayscale hover:opacity-100 transition-all">
+        {['ASHRAE 90.1 Compliant', 'LEED Accredited Lighting', 'CIE Standardized Lux'].map(t => (
+            <span key={t} className="text-[10px] font-black uppercase tracking-[0.4em] whitespace-nowrap text-black font-bold">{t}</span>
+        ))}
+      </section>
 
     </div>
   );

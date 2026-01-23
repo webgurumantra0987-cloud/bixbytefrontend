@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { 
-  VolumeX, Waves, Mic2, ShieldAlert, 
-  Layers, ChevronRight, Activity, Headphones,
-  Target, Zap
+  VolumeX, Waves, Mic2, Layers, 
+  ChevronRight, Activity, Target, Zap, Sliders, ShieldCheck
 } from 'lucide-react';
 
 // Common Components
@@ -11,152 +11,168 @@ import ServiceFeatureCards from '../../../components/common/ServiceFeatureCards'
 import ServiceCTA from '../../../components/common/ServiceCTA';
 import FAQSection from '../../../components/common/FAQSection';
 
-// Data
-import { processItems } from '../../../Data';
-
 const AcousticTreatment = () => {
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="bg-[#FAF9F6] selection:bg-[#d4af37] selection:text-white">
+    <div className="bg-[#FAF9F6] selection:bg-[#828a1c] selection:text-white pb-20">
       
-      {/* 1. HERO: THE SCIENCE OF SILENCE */}
+      {/* 1. HERO SECTION */}
       <HeroSection 
-        subtitle="Sound Engineering & Isolation"
+        subtitle="Forensic Sound Engineering"
         title="Acoustic"
         highlight="Treatment."
         backgroundImage="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80"
       />
 
-      {/* 2. TECHNICAL NARRATIVE (300 Words Content) */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-20">
-          <div className="space-y-8 text-gray-500 text-lg leading-relaxed">
-            <span className="text-[#d4af37] text-[10px] font-black uppercase tracking-[0.5em] block">Sound Theory</span>
-            <h2 className="text-5xl font-serif italic text-[#1a1a1a] leading-tight">Mastering the <br /> Sonic Environment.</h2>
-            <p>
-              Acoustic design is often the most overlooked aspect of interior architecture, yet it has the most profound impact on human comfort. At Bixbite, we treat sound as a physical material that can be shaped, absorbed, or reflected. Our <strong>Acoustic Treatment services</strong> go beyond simple padding; we provide forensic-level analysis of sound transmission paths.
-            </p>
-            <p>
-              We utilize <strong>NRC-rated (Noise Reduction Coefficient)</strong> materials and <strong>STC-certified (Sound Transmission Class)</strong> partitions to ensure that private conversations remain private and loud environments remain contained. Whether it is a corporate boardroom requiring speech privacy or a luxury home cinema demanding perfect reverberation times, our engineering ensures that the "soundstage" of your room is perfectly balanced.
+      {/* SECTION 1: THE PHILOSOPHY OF SOUND */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">01 — Philosophy</span>
+            <h2 className="text-4xl md:text-5xl font-serif italic text-[#1a1a1a]">Designing for the <span className="text-[#828a1c]">Subconscious.</span></h2>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              In high-end architecture, the most profound luxury is often invisible: <strong>Silence.</strong> While marble and light define the visual palette, it is the acoustic signature that defines the psychological comfort of a space. At Bixbite, we approach sound as a physical material—a force to be shaped, absorbed, or reflected to enhance the human experience.
             </p>
           </div>
-          <div className="bg-[#1a1a1a] p-12 flex flex-col justify-center">
-             <Activity className="text-[#d4af37] mb-8 w-12 h-12" />
-             <h3 className="text-white text-2xl font-serif italic mb-6">The Decibel Delta</h3>
-             <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                Our goal is to achieve a noise floor reduction of up to $30dB$ through strategic multi-layered wall assemblies and decoupled flooring systems.
-             </p>
-             <div className="h-px bg-white/10 w-full mb-8"></div>
-             <div className="grid grid-cols-2 gap-6">
-                <div>
-                    <p className="text-[#d4af37] font-black text-[10px] uppercase tracking-widest">Absorption</p>
-                    <p className="text-white text-xs mt-1">NRC 0.95+</p>
-                </div>
-                <div>
-                    <p className="text-[#d4af37] font-black text-[10px] uppercase tracking-widest">Isolation</p>
-                    <p className="text-white text-xs mt-1">STC 65 Typical</p>
-                </div>
+          <div className="aspect-video bg-gray-100 overflow-hidden shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?auto=format&fit=crop&q=80" alt="Architectural Sound Design" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: THE PHYSICS OF ISOLATION */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto bg-white">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 aspect-square bg-gray-200 shadow-xl">
+             <img src="https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&q=80" alt="Acoustic Insulation Materials" className="w-full h-full object-cover" />
+          </div>
+          <div className="order-1 lg:order-2 space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">02 — Engineering</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">The Triple-Leaf <span className="text-[#6b4411]">Barrier.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              To achieve forensic-level silence, we follow the <strong>Triple-Leaf Principle</strong> of sound isolation. This involves utilizing high-density <strong>Mass-Loaded Vinyl (MLV)</strong> and decoupled wall systems. By breaking the physical connection between rooms, we ensure that vibrations from urban traffic or mechanical plants cannot penetrate the structural joists of your sanctuary.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: REVERBERATION CONTROL */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">03 — Clarity</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Managing the <span className="text-[#828a1c]">RT60 Spectrum.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              A room without treatment suffers from "Acoustic Pollution"—the chaotic bouncing of waves off hard surfaces like glass and concrete. We calculate the <strong>RT60 (Reverberation Time)</strong> with mathematical precision. For a boardroom, we aim for a crisp 0.6 seconds; for a cinema, a tight 0.4 seconds, ensuring speech is clear and music is immersive.
+            </p>
+          </div>
+          <div className="aspect-video bg-gray-100 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80" alt="Professional Studio Reverb Control" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: LOW FREQUENCY MANAGEMENT */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto bg-[#1a1a1a] text-white overflow-hidden relative">
+        <div className="absolute right-0 top-0 w-1/3 h-full bg-[#828a1c]/5 blur-3xl"></div>
+        <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+          <div className="order-2 lg:order-1 aspect-video border border-white/10">
+            <img src="https://images.unsplash.com/photo-1751806524631-565725f5bb74?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8UHJlc3N1cmUlMjBCYXNlZCUyMGludGVyaW9yJTIwZGVzaWdufGVufDB8fDB8fHww" alt="Bass Traps in Modern Interior" className="w-full h-full object-cover grayscale" />
+          </div>
+          <div className="order-1 lg:order-2 space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">04 — The Low End</span>
+            <h3 className="text-4xl font-serif italic">Pressure Based <span className="text-[#828a1c]">Bass Trapping.</span></h3>
+            <p className="text-gray-400 leading-relaxed font-light text-lg">
+              Bass energy congregates in corners, creating "muddiness." Our custom <strong>Corner-Loaded Bass Traps</strong> act as structural lungs. They breathe in high-pressure low-end energy, converting kinetic vibration into microscopic heat, ensuring that deep frequencies remain punchy and do not resonate through the building's skeleton.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: THE LEDE METHODOLOGY */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">05 — Layout Strategy</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Live End / <span className="text-[#828a1c]">Dead End.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              We apply the <strong>LEDE principle</strong> to create a natural "breathable" atmosphere. The front of the room is "Dead"—treated with heavy mineral wool to kill interference. The rear is "Live"—utilizing <strong>Quadratic Residue Diffusers (QRD)</strong> to scatter sound, making a small room feel like a grand auditorium without the claustrophobia of over-damping.
+            </p>
+          </div>
+          <div className="aspect-[4/3] bg-gray-200">
+             <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80" alt="LEDE Acoustic Room Mapping" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: INVISIBLE INTEGRATION */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto bg-white">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 aspect-video shadow-xl">
+             <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?auto=format&fit=crop&q=80" alt="Hidden Acoustic Panels" className="w-full h-full object-cover" />
+          </div>
+          <div className="order-1 lg:order-2 space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">06 — Aesthetics</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Acoustically <span className="text-[#6b4411]">Transparent.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              Technical performance shouldn't compromise beauty. We specialize in <strong>Invisible Integration</strong>, where high-performance baffles are hidden behind luxury silks, suedes, or custom-perforated timber slats. Your space looks like a designer masterpiece but performs like a world-class studio.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: RAY-TRACING SIMULATION */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">07 — Pre-Construction</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Predictive <span className="text-[#828a1c]">Modeling.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              Before a single panel is installed, we conduct <strong>EASE Modeling</strong> and <strong>Ray-Tracing simulations</strong>. We provide a "Predictive Decibel Map," allowing us to identify potential flanking paths and "hot zones" in the digital phase, saving thousands in construction errors and ensuring guaranteed results.
+            </p>
+          </div>
+          <div className="aspect-video bg-[#0f1108] p-4">
+             <div className="w-full h-full border border-[#828a1c]/20 flex items-center justify-center text-[#828a1c] text-[10px] uppercase tracking-[0.5em]">
+                [ 3D Acoustic Simulation Render ]
              </div>
           </div>
         </div>
       </section>
 
-      {/* 3. ACOUSTIC ANALYSIS IMAGE (Educational Diagram Style) */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="aspect-video overflow-hidden grayscale opacity-80 hover:opacity-100 transition-opacity duration-1000">
-            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&q=80" alt="Sound Wave Diffusion" className="w-full h-full object-cover" />
+      {/* SECTION 8: FINAL CALIBRATION */}
+      <section className="py-24 px-6 max-w-[1600px] mx-auto bg-[#FAF9F6]">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="order-2 lg:order-1 aspect-square max-h-[500px] overflow-hidden">
+             <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80" alt="Audio Calibration Tools" className="w-full h-full object-cover" />
           </div>
-          <p className="text-center mt-6 text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">Fig 1.1: Specular Reflection and Diffusion Mapping</p>
+          <div className="order-1 lg:order-2 space-y-6">
+            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em]">08 — Delivery</span>
+            <h3 className="text-4xl font-serif italic text-[#1a1a1a]">Forensic <span className="text-[#828a1c]">Handover.</span></h3>
+            <p className="text-gray-500 leading-relaxed font-light text-lg">
+              Our process concludes with a post-installation audit. We measure the <strong>NC-20 (Noise Criteria)</strong> levels and conduct impulse response tests. The result is a certified environment that meets international standards for acoustic excellence, ready for its place in the Bixbite portfolio.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* 4. THE THREE PILLARS (Grid Design) */}
-      <section className="py-24 border-y border-black/5">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-16">
-          {[
-            { icon: <VolumeX />, title: "Sound Isolation", desc: "Blocking external noise and containing internal volume through mass-loaded vinyl and decoupled studs." },
-            { icon: <Waves />, title: "Reverb Control", desc: "Using fabric-wrapped panels and acoustic baffles to eliminate flutter echo and 'room ring'." },
-            { icon: <Target />, title: "Bass Trapping", desc: "Managing low-frequency energy in corners to prevent muddy sound and standing waves." }
-          ].map((item, i) => (
-            <div key={i} className="group">
-              <div className="text-[#d4af37] mb-6 transform group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
-              <h4 className="text-[12px] font-black uppercase tracking-widest mb-4">{item.title}</h4>
-              <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. REUSABLE SERVICE CARDS (The Tech) */}
-      <ServiceFeatureCards 
-        title="Industrial Grade Materials"
-        subtitle="The Acoustic Inventory"
-        items={[
-            { icon: <Layers size={20} />, title: "Mass Loaded Vinyl", description: "Thin yet incredibly dense barriers used to stop sound transmission through walls." },
-            { icon: <Mic2 size={20} />, title: "Perforated Panels", description: "Aesthetic wood or metal panels that allow sound to be absorbed by hidden glass-wool." },
-            { icon: <Zap size={20} />, title: "Diffusion Arrays", description: "Mathematical surfaces that scatter sound to create a sense of space." }
-        ]} 
-      />
-
-      {/* 6. ACOUSTIC ZONING CASE STUDY (Editorial) */}
-      <section className="py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-7">
-                <img src="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?auto=format&fit=crop&q=80" className="w-full h-[500px] object-cover" alt="Home Cinema" />
-            </div>
-            <div className="lg:col-span-5">
-                <h3 className="text-4xl font-serif italic mb-8">The Professional Studio Standard.</h3>
-                <p className="text-gray-500 leading-relaxed mb-10">
-                    From home theaters to large-scale auditoriums, we apply the <strong>LEDE (Live End, Dead End)</strong> principle to ensure that spaces feel natural yet controlled. Our designs are vetted through EASE modeling to predict acoustic behavior before construction.
-                </p>
-                <div className="space-y-4">
-                    {['Boardroom Speech Privacy', 'Mechanical Plant Room Isolation', 'Auditorium Tuning'].map(t => (
-                        <div key={t} className="flex items-center gap-3">
-                            <ChevronRight size={14} className="text-[#d4af37]" />
-                            <span className="text-[10px] font-black uppercase tracking-widest">{t}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* 7. REUSABLE PROCESS */}
-      <ServiceFeatureCards 
-        title="Diagnostic Path"
-        subtitle="Strategy"
-        items={processItems} 
-      />
-
-      {/* 8. FAQ SECTION (REUSABLE) */}
+      {/* REUSABLE COMPONENTS */}
       <FAQSection 
-        title="Acoustic Engineering FAQs"
+        title="Technical FAQ"
         items={[
-            { q: "Is soundproofing the same as acoustic treatment?", a: "No. Soundproofing stops sound from entering/leaving a room. Acoustic treatment improves the sound quality inside the room." },
-            { q: "Can treatment be hidden behind interior design?", a: "Yes, we use 'Acoustically Transparent' fabrics that allow us to hide all technical materials behind beautiful decor." }
+            { q: "Can this be applied to existing structures?", a: "Yes, we specialize in acoustic retrofitting for penthouses and commercial offices without structural demolition." },
+            { q: "Are the materials fire-rated?", a: "Every material Bixbite uses is ASTM E84 Class A fire-rated for safety." }
         ]} 
       />
 
-      {/* 9. TECHNICAL TRUST STRIP */}
-      <section className="py-16 bg-[#FAF9F6] border-t border-black/5 flex flex-wrap justify-center gap-12 opacity-30 grayscale">
-        {['STC Rated Certified', 'NRC Laboratory Tested', 'ASTM E84 Class A Fire Rated'].map(t => (
-            <p key={t} className="text-[10px] font-black uppercase tracking-[0.4em]">{t}</p>
-        ))}
-      </section>
-
-      {/* 10. REUSABLE CTA */}
       <ServiceCTA 
-        title="Don't let noise define your space."
-        description="Connect with our acoustic engineers for a decibel-level site audit."
-        buttonText="Book Acoustic Audit"
+        title="Command your sonic environment."
+        description="Connect with our lead acoustic engineer for a site audit."
+        buttonText="Book Site Audit"
         link="/contact"
       />
-
     </div>
   );
 };
