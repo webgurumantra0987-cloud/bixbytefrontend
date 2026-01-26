@@ -31,31 +31,31 @@ const getBadge = (index) => (index % 2 === 0 ? "Premium" : "Standard");
  export const galleryData = [
   // --- EXISTING INTERNATIONAL SELECTIONS ---
   { id: 1, title: "The Obsidian Villa", sector: "Residential", location: "Malibu, CA", year: "2024", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200" },
-  { id: 2, title: "Grand Hyatt Facade", sector: "Commercial", location: "Dubai, UAE", year: "2023", image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200" },
+  { id: 2, title: "Grand Hyatt Facade", sector: "Commercial", location: "Dubai, UAE", year: "2023", image: "https://media.istockphoto.com/id/1430769311/photo/the-lobby-of-a-luxury-hotel-in-arabic-style-with-high-ceilings-columns-and-a-reception-desk.webp?a=1&b=1&s=612x612&w=0&k=20&c=tG3aB-B0FNg6NxiPtd8v80R4gNrBNCnqRgkbk7aKPIs=" },
   { id: 3, title: "Minimalist Loft", sector: "Residential", location: "Berlin, DE", year: "2024", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" },
   { id: 4, title: "Azure Corporate HQ", sector: "Commercial", location: "Singapore", year: "2022", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200" },
   
   // --- NEW INDIAN ARCHITECTURAL SELECTIONS ---
-  { id: 13, title: "The Lotus Pavilion", sector: "Institutional", location: "New Delhi, IN", year: "2024", image: "https://images.unsplash.com/photo-1564507592333-c60657451dd7?auto=format&fit=crop&q=80&w=1200" },
-  { id: 14, title: "Jaipur Heritage Wing", sector: "Commercial", location: "Jaipur, RJ", year: "2023", image: "https://images.unsplash.com/photo-1599661046289-e31887846eac?auto=format&fit=crop&q=80&w=1200" },
-  { id: 15, title: "Cybercity Glass Monolith", sector: "Commercial", location: "Gurugram, HR", year: "2025", image: "https://images.unsplash.com/photo-1590483734724-383b85ad9390?auto=format&fit=crop&q=80&w=1200" },
+  { id: 13, title: "The Lotus Pavilion", sector: "Institutional", location: "New Delhi, IN", year: "2024", image: "https://images.unsplash.com/photo-1752758814584-afc1de531fef?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW50ZXJpb3IlMjBpbWFncyUyMExPVFVTJTIwUEFWSUxJT058ZW58MHx8MHx8fDA%3D" },
+  { id: 14, title: "Jaipur Heritage Wing", sector: "Commercial", location: "Jaipur, RJ", year: "2023", image: "https://images.unsplash.com/photo-1651569411954-b843950d0c1e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW50ZXJpb3IlMjBpbWFncyUyMEpBSVBVUiUyMEhFQVJUQUdFJTIwV0lMTHxlbnwwfHwwfHx8MA%3D%3D" },
+  { id: 15, title: "Cybercity Glass Monolith", sector: "Commercial", location: "Gurugram, HR", year: "2025", image: "https://media.istockphoto.com/id/1293762741/photo/modern-living-room-interior-3d-render.webp?a=1&b=1&s=612x612&w=0&k=20&c=Nk1uLgimD0AG9ADjHPx1iLvhZnm28YW6VRZr7uGwvS0=" },
   { id: 16, title: "Bungalow 42", sector: "Residential", location: "Bengaluru, KA", year: "2024", image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&q=80&w=1200" },
-  { id: 17, title: "Marine Drive Suites", sector: "Residential", location: "Mumbai, MH", year: "2022", image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e6e?auto=format&fit=crop&q=80&w=1200" },
-  { id: 18, title: "Concrete Ashram Retreat", sector: "Institutional", location: "Rishikesh, UK", year: "2023", image: "https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&q=80&w=1200" },
+  { id: 17, title: "Marine Drive Suites", sector: "Residential", location: "Mumbai, MH", year: "2022", image: "https://media.istockphoto.com/id/1443804835/photo/a-beautiful-city-with-a-beach-and-some-tetrapods-as-well-as-a-seating-area.webp?a=1&b=1&s=612x612&w=0&k=20&c=AKsK_arQ-HS79xXxyo-HsEXvMyz63NlBl9s7Xy8sfI0=" },
+  { id: 18, title: "Concrete Ashram Retreat", sector: "Institutional", location: "Rishikesh, UK", year: "2023", image: "https://media.istockphoto.com/id/1129124675/photo/maruti-temple-in-panjim.webp?a=1&b=1&s=612x612&w=0&k=20&c=pnsEERjo0b7BuNPbaSWRoCDQfZzVvLRkJeWcGgWNxPI=" },
   { id: 19, title: "The Brick Courtyard", sector: "Residential", location: "Ahmedabad, GJ", year: "2024", image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200" },
   { id: 20, title: "Himalayan Glass House", sector: "Residential", location: "Manali, HP", year: "2025", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1200" },
   
   // --- PREVIOUS INTERNATIONAL DATA ---
   { id: 5, title: "Ethereal Museum", sector: "Institutional", location: "Paris, FR", year: "2024", image: "https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&q=80&w=1200" },
-  { id: 6, title: "Skyline Observatory", sector: "Institutional", location: "Tokyo, JP", year: "2023", image: "https://images.unsplash.com/photo-1449156059431-7899557a90b4?auto=format&fit=crop&q=80&w=1200" },
-  { id: 7, title: "The Quartz Pavillion", sector: "Institutional", location: "Zurich, CH", year: "2024", image: "https://images.unsplash.com/photo-1518005020951-ecc8a993f069?auto=format&fit=crop&q=80&w=1200" },
+  { id: 6, title: "Skyline Observatory", sector: "Institutional", location: "Tokyo, JP", year: "2023", image: "https://media.istockphoto.com/id/691792778/photo/standing-young-woman-and-modern-city-panorama-view-from-inside-of-building.webp?a=1&b=1&s=612x612&w=0&k=20&c=8pwiMgE11CLUPX3rB220g9pM8mY_cL_yzd8AKZoZjuM=" },
+  { id: 7, title: "The Quartz Pavillion", sector: "Institutional", location: "Zurich, CH", year: "2024", image: "https://media.istockphoto.com/id/171205509/photo/architecture-corporate-interior-1.webp?a=1&b=1&s=612x612&w=0&k=20&c=vrXFPFKNaCNhb7_yTK9hWRKRE0RkjmGuDioACgdHuqA=" },
   { id: 8, title: "Onyx Executive Suite", sector: "Commercial", location: "London, UK", year: "2023", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" },
   { id: 9, title: "Desert Mirage Estate", sector: "Residential", location: "Arizona, USA", year: "2024", image: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?auto=format&fit=crop&q=80&w=1200" },
   { id: 10, title: "Brutalist Library", sector: "Institutional", location: "Oslo, NO", year: "2022", image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1200" },
   { id: 11, title: "Vertical Forest Loft", sector: "Residential", location: "Milan, IT", year: "2023", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200" },
   { id: 12, title: "Silvergate Tower", sector: "Commercial", location: "Seoul, KR", year: "2025", image: "https://images.unsplash.com/photo-1470723710355-95304d8aece4?auto=format&fit=crop&q=80&w=1200" }
 ];
-  
+
 
 
 

@@ -43,8 +43,7 @@ const Home = () => {
       {/* 7. Partners & Contact: Final CTA */}
       <PartnersContact />
       
-      {/* 8. Footer: Navigation & Legal */}
-      <Footer />
+    
     </main>
   );
 };

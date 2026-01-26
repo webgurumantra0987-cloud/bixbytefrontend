@@ -22,10 +22,6 @@ const About = () => {
 
 
 
-
-
-  
-
   return (
     <div className="bg-[#FAF9F6] min-h-screen selection:bg-[#d4af37] selection:text-white font-sans text-[#1a1a1a]">
       

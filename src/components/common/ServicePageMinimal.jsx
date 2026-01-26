@@ -10,6 +10,8 @@ const ServicePageMinimal = ({ data, accentColor = "#828a1c" }) => {
     window.scrollTo(0, 0);
   }, []);
 
+
+  
   return (
     /* CHANGED: Background to Bone/Linen and Text to Slate-900 */
     <div className="bg-[#FAF9F6] text-[#1a1a1a] selection:bg-[#1a1a1a] selection:text-white">
