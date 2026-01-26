@@ -1,150 +1,166 @@
 import React, { useEffect } from "react";
-import { ArrowUpRight, Ruler, ShieldCheck, Users, Sparkles, Target, Eye } from "lucide-react";
+import { ArrowUpRight, Ruler, ShieldCheck, Users, Sparkles, Target, Eye, Plus, MapPin, Sun } from "lucide-react";
 import { Link } from 'react-router-dom';
 
 const About = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  // Reset scroll to top on component mount
+  useEffect(() => { 
+    window.scrollTo(0, 0); 
+  }, []);
+
+  const pillars = [
+    { icon: Ruler, title: "Precision", desc: "BIM modeling ensures zero error during the casting phase." },
+    { icon: Users, title: "Culture", desc: "Our designs are rooted in Indian heritage, optimized for modern living." },
+    { icon: ShieldCheck, title: "Trust", desc: "A single point of turnkey accountability from site to styling." },
+    { icon: Sparkles, title: "Soul", desc: "We merge raw materiality with refined luxury for sensory environments." }
+  ];
+
+  const workflow = [
+    { step: "01", icon: MapPin, title: "Site Intuition", text: "Topography and light pattern analysis." },
+    { step: "02", icon: Sun, title: "Spatial Narrative", text: "Developing flow and material palettes." },
+    { step: "03", icon: Ruler, title: "Synthesis", text: "8K visualizations and performance blueprints." },
+    { step: "04", icon: Plus, title: "Realization", text: "Indistinguishable from the initial concept." }
+  ];
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen selection:bg-[#d4af37] selection:text-white font-sans scroll-smooth">
+    <div className="bg-[#FAF9F6] min-h-screen selection:bg-[#d4af37] selection:text-white font-sans scroll-smooth overflow-x-hidden text-[#1a1a1a]">
       
-      {/* --- HERO SECTION --- */}
-      <section className="relative h-[85vh] flex items-center overflow-hidden bg-[#1a1a1a]">
-        <div className="absolute inset-0 z-0">
+      {/* --- HERO: MINIMALIST OVERLAP --- */}
+      <section className="relative h-[80vh] flex items-center bg-[#0A0A0A] overflow-hidden">
+        <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full z-0">
           <img 
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" 
-            alt="Luxury Architecture" 
-            className="w-full h-full object-cover opacity-50 scale-110 animate-[pulse_10s_infinite]"
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80" 
+            alt="Modern Indian Architecture" 
+            className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-[3s]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-transparent to-transparent"></div>
         </div>
 
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="max-w-4xl">
-            <span className="text-[#d4af37] text-xs font-black uppercase tracking-[0.6em] mb-6 block">
-              Established 2012
-            </span>
-            <h1 className="text-white text-5xl md:text-8xl font-serif italic mb-8 leading-[1.1]">
-              Defining the <span className="text-[#d4af37] not-italic">Art</span> of <br />
-              Modern Living.
+        <div className="container mx-auto px-6 lg:px-20 relative z-10">
+          <div className="max-w-3xl">
+            <nav className="flex items-center gap-3 mb-8">
+                <div className="w-8 h-[1px] bg-[#d4af37]"></div>
+                <span className="text-[#d4af37] text-[9px] font-black uppercase tracking-[0.6em]">Est. 2012 • New Delhi</span>
+            </nav>
+            <h1 className="text-white text-5xl md:text-7xl lg:text-8xl font-serif italic leading-[0.9] tracking-tighter mb-8">
+              The Art of <br />
+              <span className="text-[#d4af37] not-italic text-4xl md:text-6xl lg:text-7xl">Permanence</span>.
             </h1>
-            <p className="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed mb-10 opacity-80">
-              Bixbite is an award-winning architecture and interior studio dedicated to crafting bespoke spaces that blend technical precision with soul-stirring aesthetics.
+            <p className="text-gray-400 text-xs md:text-sm max-w-sm leading-relaxed border-l border-white/10 pl-6">
+              Bixbite is a multidisciplinary studio redefining the intersections of light, material, and human experience across the Indian subcontinent.
             </p>
           </div>
         </div>
       </section>
 
-      {/* --- MISSION & VISION (Split Layout) --- */}
-      <section className="py-32 px-6 lg:px-12">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="space-y-16">
-              <div className="group">
-                <div className="flex items-center gap-4 text-[#d4af37] mb-6">
-                  <Target size={24} />
-                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#1a1a1a]">Our Mission</span>
-                </div>
-                <h3 className="text-[#1a1a1a] text-3xl md:text-4xl font-serif italic mb-6">Transforming dreams into reality.</h3>
-                <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
-                  To eliminate the friction between design and inhabitability through our <strong>Turnkey approach</strong>, delivering integrity and luxury in every square foot.
+      {/* --- MANIFESTO: REDUCED SCALE --- */}
+      <section className="py-32 px-6 lg:px-20">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div className="lg:col-span-4">
+                <span className="text-[8px] font-black uppercase tracking-[0.4em] text-gray-400 mb-6 block">Our Manifesto</span>
+                <h2 className="text-3xl md:text-4xl font-serif italic leading-tight">
+                    We do not build houses. <br />We curate <span className="text-gray-300">atmospheres</span>.
+                </h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed font-light mb-10 italic">
+                    "Since our inception, we have operated at the nexus of technical rigor and poetic intuition. We believe architecture should be a silent protagonist in the lives of those it shelters."
                 </p>
-              </div>
-              <div className="group">
-                <div className="flex items-center gap-4 text-[#d4af37] mb-6">
-                  <Eye size={24} />
-                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#1a1a1a]">Our Vision</span>
-                </div>
-                <h3 className="text-[#1a1a1a] text-3xl md:text-4xl font-serif italic mb-6">Setting the global benchmark.</h3>
-                <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
-                  To be the gold standard for **sustainable opulence**, creating landmarks that remain modern and relevant for generations to come.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-[4/5] bg-gray-200 overflow-hidden rounded-sm">
-                <img 
-                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80" 
-                  alt="Architecture Planning" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-white p-8 border border-gray-100 shadow-sm hidden md:block">
-                <p className="text-[#d4af37] text-4xl font-serif italic">150+</p>
-                <p className="text-gray-400 text-[10px] uppercase tracking-widest font-bold">Projects Built</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- REDESIGNED FUNDAMENTAL PRINCIPLES (Best UI Layout) --- */}
-      <section className="py-32 bg-[#1a1a1a] text-white">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch">
-            
-            {/* Left: Sticky Image Container */}
-            <div className="relative hidden lg:block h-full min-h-[600px]">
-              <div className="sticky top-32 w-full h-[600px] overflow-hidden rounded-sm">
-                <img 
-                  src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80" 
-                  alt="Execution Detail" 
-                  className="w-full h-full object-cover brightness-75"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent"></div>
-              </div>
-            </div>
-
-            {/* Right: Content List */}
-            <div className="flex flex-col justify-center py-10">
-              <span className="text-[#d4af37] text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">
-                The Pillars
-              </span>
-              <h2 className="text-4xl md:text-6xl font-serif italic mb-16 leading-tight">
-                Fundamental <br /> Principles.
-              </h2>
-              
-              <div className="space-y-0">
-                {[
-                  { icon: Ruler, title: "Architectural Precision", desc: "Using BIM and 3D visualization to ensure millimeter-perfect execution before construction begins." },
-                  { icon: Users, title: "Human-Centric Design", desc: "Your lifestyle dictates the flow. We create spaces that function as beautifully as they look." },
-                  { icon: ShieldCheck, title: "Unmatched Reliability", desc: "From site analysis to interior styling, we provide a single point of accountability." },
-                  { icon: Sparkles, title: "Aesthetic Innovation", desc: "Merging raw materiality with refined elegance to create timeless, iconic environments." }
-                ].map((item, idx) => (
-                  <div key={idx} className="group border-t border-white/10 py-10 hover:bg-white/[0.02] transition-colors px-4 -mx-4">
-                    <div className="flex items-start gap-8">
-                      <item.icon className="text-[#d4af37] shrink-0 group-hover:scale-110 transition-transform" size={28} />
-                      <div>
-                        <h4 className="text-xl font-bold uppercase tracking-widest mb-3 group-hover:text-[#d4af37] transition-colors">
-                          {item.title}
-                        </h4>
-                        <p className="text-gray-400 text-base leading-relaxed max-w-md">
-                          {item.desc}
-                        </p>
-                      </div>
+                <div className="flex gap-16 pt-10 border-t border-black/5">
+                    <div>
+                        <p className="text-2xl font-serif italic text-[#d4af37]">12+</p>
+                        <p className="text-[7px] font-black uppercase tracking-[0.2em] text-gray-400">Years Practice</p>
                     </div>
-                  </div>
-                ))}
-              </div>
+                    <div>
+                        <p className="text-2xl font-serif italic text-[#d4af37]">150+</p>
+                        <p className="text-[7px] font-black uppercase tracking-[0.2em] text-gray-400">Projects Delivered</p>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- SEO NARRATIVE SECTION --- */}
-      <section className="py-32 bg-[#FAF9F6]">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h3 className="text-[#1a1a1a] text-3xl font-serif italic mb-10 leading-relaxed">
-            "We provide more than blueprints. We provide a commitment to excellence, ensuring your legacy is carved in stone."
-          </h3>
-          <div className="w-20 h-[1px] bg-[#d4af37] mx-auto mb-10"></div>
-          <p className="text-gray-600 text-lg leading-loose">
-            BIXBITE is a premier <strong>Full-Service Architectural Studio</strong>. Our legacy is built on a decade of delivering <strong>Luxury Modern Villas</strong> and commercial landmarks across the globe. By integrating <strong>Turnkey Project Management</strong> with avant-garde interior design, we offer a seamless transition from conceptual sketches to finished masterpieces.
-          </p>
+      {/* --- MISSION & VISION: SMALLER BLOCKS --- */}
+      <section className="bg-white px-6 lg:px-20">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-px bg-black/5 border-x border-black/5">
+           <div className="bg-white p-12 group hover:bg-[#0A0A0A] transition-all duration-500">
+              <Target className="text-[#d4af37] mb-8" size={24}/>
+              <h3 className="text-[8px] font-black uppercase tracking-[0.4em] mb-4 group-hover:text-white">The Mission</h3>
+              <p className="text-lg font-serif italic leading-snug group-hover:text-gray-400">
+                Eliminating the friction between conceptual design and livable reality through turnkey precision.
+              </p>
+           </div>
+           <div className="bg-white p-12 group hover:bg-[#0A0A0A] transition-all duration-500">
+              <Eye className="text-[#d4af37] mb-8" size={24}/>
+              <h3 className="text-[8px] font-black uppercase tracking-[0.4em] mb-4 group-hover:text-white">The Vision</h3>
+              <p className="text-lg font-serif italic leading-snug group-hover:text-gray-400">
+                Setting the global benchmark for sustainable opulence responding to the climate of 2026.
+              </p>
+           </div>
         </div>
       </section>
 
+      {/* --- CORE PILLARS: CLEAN DARK GRID --- */}
+      <section className="py-32 bg-[#0A0A0A] text-white">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="flex justify-between items-end mb-20">
+            <h2 className="text-3xl md:text-4xl font-serif italic tracking-tighter">Core Pillars</h2>
+            <span className="hidden md:block text-gray-500 text-[8px] font-bold uppercase tracking-[0.4em]">Methodology • 04</span>
+          </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5">
+            {pillars.map((item, idx) => (
+              <div key={idx} className="bg-[#0A0A0A] p-10 hover:bg-[#FAF9F6] transition-all duration-500 group">
+                <item.icon className="text-[#d4af37] group-hover:text-black mb-8 transition-colors" size={20} />
+                <h4 className="text-[10px] font-bold uppercase tracking-widest mb-3 group-hover:text-black transition-colors">{item.title}</h4>
+                <p className="text-gray-500 group-hover:text-gray-600 text-[11px] leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- PROCESS: MICRO-TYPOGRAPHY LIST --- */}
+      <section className="py-32 px-6 lg:px-20 bg-[#FAF9F6]">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-baseline mb-20 border-b border-black/5 pb-8">
+            <h2 className="text-4xl font-serif italic tracking-tighter">Lifecycle.</h2>
+            <p className="text-gray-400 text-[8px] font-bold uppercase tracking-[0.4em]">A Four-Stage Evolution</p>
+          </div>
+
+          <div className="space-y-2">
+            {workflow.map((item, idx) => (
+              <div key={idx} className="flex gap-10 items-center py-8 border-b border-black/5 group hover:bg-white transition-all px-6">
+                <span className="text-xl font-serif italic text-gray-300 group-hover:text-[#d4af37] transition-colors">{item.step}</span>
+                <div className="flex-1 flex justify-between items-center">
+                    <div>
+                        <h4 className="text-[11px] font-bold uppercase tracking-widest mb-1">{item.title}</h4>
+                        <p className="text-gray-500 text-[11px] font-light">{item.text}</p>
+                    </div>
+                    <ArrowUpRight className="text-gray-300 group-hover:text-black opacity-0 group-hover:opacity-100 transition-all" size={18} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- FOOTER: ELEGANT CTA --- */}
+      <footer className="py-32 text-center border-t border-black/5 bg-white">
+         <div className="container mx-auto px-6">
+            <h2 className="text-4xl md:text-5xl font-serif italic tracking-tighter leading-none mb-12">
+               Craft Your <span className="text-[#d4af37]">Legacy</span>.
+            </h2>
+            <Link to="/contact" className="group inline-flex items-center gap-6 bg-[#0A0A0A] text-white px-12 py-5 hover:bg-[#d4af37] hover:text-black transition-all duration-500">
+               <span className="text-[9px] font-black uppercase tracking-[0.4em]">Begin Consultation</span>
+               <Plus className="group-hover:rotate-90 transition-transform" size={14} />
+            </Link>
+         </div>
+      </footer>
     </div>
   );
 };

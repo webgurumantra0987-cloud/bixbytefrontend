@@ -1,137 +1,139 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { ArrowUpRight, Plus, Layers, Globe, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { projects } from '../Data';
+ import  { galleryData } from '../Data';
+
 
 const Gallery = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [sectFilter, setSectFilter] = useState('All Sectors');
+  const sectors = ['All Sectors', 'Residential', 'Commercial', 'Institutional'];
 
+  // Ensure scroll is at top on load
   useEffect(() => {
-    setIsLoaded(true);
     window.scrollTo(0, 0);
   }, []);
 
-  const categories = ['All', 'Exterior', 'Interior'];
-
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeFilter);
+  const filteredProjects = useMemo(() => {
+    return galleryData.filter(proj => 
+      sectFilter === 'All Sectors' || proj.sector === sectFilter
+    );
+  }, [sectFilter]);
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen selection:bg-[#d4af37] selection:text-white font-sans">
+    <div className="min-h-screen bg-[#FAF9F6] selection:bg-[#d4af37] selection:text-white">
       
-      {/* --- HERO SECTION (Left-Aligned to match About Us Header Style) --- */}
-      <section className="relative h-[90vh] flex items-center overflow-hidden bg-[#0a0a0a]">
+      {/* --- SECTION 1: DARK HERO (THE DRAMA) --- */}
+      <section className="relative h-[95vh] w-full flex items-center overflow-hidden bg-[#0A0A0A]">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" 
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
             alt="Hero Background" 
-            className={`w-full h-full object-cover transition-all duration-[2000ms] ease-out ${isLoaded ? 'opacity-40 scale-105' : 'opacity-0 scale-110'} animate-slow-zoom`}
+            className="w-full h-full object-cover opacity-30 grayscale scale-105 transition-transform duration-[10s] hover:scale-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#0A0A0A]"></div>
         </div>
 
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="max-w-4xl">
-            <span className="text-[#d4af37] text-[10px] font-black uppercase tracking-[0.6em] mb-6 block animate-fade-in-up">
-              Portfolio
-            </span>
-            <h1 className="text-white text-5xl md:text-8xl font-serif italic mb-8 leading-[1.1] animate-fade-in-up">
-              The Gallery of <br />
-              <span className="text-[#d4af37] not-italic">Refined</span> Vision.
+        <div className="container mx-auto px-6 lg:px-20 relative z-10">
+          <div className="max-w-5xl">
+            <div className="flex items-center gap-4 mb-10 animate-pulse">
+              <div className="w-12 h-[1px] bg-[#d4af37]"></div>
+              <span className="text-[#d4af37] text-[10px] font-black uppercase tracking-[1em]">Archive MMXXVI</span>
+            </div>
+            <h1 className="text-white text-7xl md:text-[12rem] font-serif italic leading-[0.75] tracking-tighter">
+              Structural <br />
+              <span className="text-[#d4af37] not-italic">Poetry</span>.
             </h1>
-            <p className="text-gray-300 text-lg md:text-xl max-w-2xl leading-relaxed mb-10 opacity-80 animate-fade-in-up">
-              Explore our curated archive of bespoke architecture and high-end interior design, where every line tells a story of precision and soul.
-            </p>
+            <div className="mt-20 flex items-center gap-6 text-white/40">
+                <ChevronDown size={20} className="animate-bounce" />
+                <span className="text-[9px] font-bold uppercase tracking-[0.4em]">Scroll to Explore</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* --- STICKY FILTER NAVIGATION --- */}
-      <nav className="sticky top-0 z-50 bg-[#FAF9F6]/90 backdrop-blur-xl border-b border-black/5 py-8">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-wrap justify-center md:justify-start gap-x-12 gap-y-4">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={`relative text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-300 ${
-                activeFilter === cat ? 'text-[#1a1a1a]' : 'text-gray-400 hover:text-[#1a1a1a]'
-              }`}
-            >
-              {cat}
-              {activeFilter === cat && (
-                <div className="absolute -bottom-2 left-0 w-full h-[1.5px] bg-[#d4af37]"></div>
-              )}
-            </button>
-          ))}
-        </div>
-      </nav>
-
-      {/* --- EDITORIAL PROJECT GRID --- */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-[1400px] mx-auto">
-          {/* Using a waterfall layout (offset middle items) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-32 gap-x-16">
-            {filteredProjects.map((project, index) => (
-              <div 
-                key={project.id} 
-                className={`group relative flex flex-col transition-all duration-700 ${index % 3 === 1 ? 'lg:translate-y-24' : ''}`}
-              >
-                {/* Image Wrap */}
-                <div className="relative overflow-hidden aspect-[4/5] bg-gray-100 shadow-2xl shadow-black/5">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
-                  />
-                  {/* Hover Label Overlay */}
-                  <div className="absolute inset-0 bg-[#0a0a0a]/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                  
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 text-[8px] font-black tracking-widest text-black">
-                    {project.year || "2024"}
-                  </div>
-                </div>
-
-                {/* Info Wrap */}
-                <div className="mt-8 space-y-3">
-                  <div className="flex items-center gap-2">
-                    <div className="h-[1px] w-6 bg-[#d4af37]"></div>
-                    <span className="text-[#d4af37] text-[9px] font-black uppercase tracking-widest">
-                      {project.category}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-[#1a1a1a] text-2xl font-serif italic tracking-tight group-hover:text-[#d4af37] transition-colors flex items-center justify-between">
-                    {project.title}
-                    <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all text-[#d4af37]" />
-                  </h3>
-                  
-                  <p className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em] leading-none">
-                    {project.location}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- FINAL CALL TO ACTION --- */}
-      <section className="py-40 bg-[#0a0a0a] mt-40 relative overflow-hidden">
-        {/* Subtle grid pattern for texture */}
-        <div className="absolute inset-0 opacity-[0.05] [background-image:linear-gradient(to_right,#d4af37_1px,transparent_1px),linear-gradient(to_bottom,#d4af37_1px,transparent_1px)] [background-size:100px_100px]"></div>
+      {/* --- SECTION 2: LIGHT GALLERY (THE DATA) --- */}
+      <div className="relative z-20 bg-[#FAF9F6] text-[#1a1a1a] rounded-t-[40px] -mt-10 pt-20">
         
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="text-white text-5xl md:text-8xl font-serif italic mb-12 leading-tight">
-            Build Your <span className="text-[#d4af37]">Masterpiece</span>.
-          </h2>
-          <Link to="/contact" className="inline-flex items-center gap-6 bg-[#d4af37] text-black px-16 py-6 text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all duration-500 shadow-xl">
-            Enquire Today
-          </Link>
-        </div>
-      </section>
+        {/* Sticky Nav */}
+        <nav className="sticky top-0 z-50 bg-[#FAF9F6]/80 backdrop-blur-xl border-b border-black/5 px-6 lg:px-20 py-10">
+          <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex gap-10 overflow-x-auto no-scrollbar w-full md:w-auto">
+              {sectors.map((sect) => (
+                <button 
+                  key={sect} 
+                  onClick={() => setSectFilter(sect)}
+                  className={`text-[10px] font-black uppercase tracking-[0.3em] transition-all relative pb-2 whitespace-nowrap
+                    ${sectFilter === sect ? 'text-black' : 'text-gray-300 hover:text-black'}`}
+                >
+                  {sect}
+                  {sectFilter === sect && (
+                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#d4af37]"></span>
+                  )}
+                </button>
+              ))}
+            </div>
+            <div className="flex items-center gap-4">
+               <Globe size={14} className="text-[#d4af37]" />
+               <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Global Index / {filteredProjects.length}</span>
+            </div>
+          </div>
+        </nav>
 
+        {/* Masonry Grid */}
+        <main className="py-32 px-6 lg:px-20">
+          <div className="container mx-auto">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-12 space-y-32">
+              {filteredProjects.map((project, idx) => (
+                <div key={project.id} className="relative break-inside-avoid group pt-4">
+                  <Link to={`/project/${project.id}`} className="block">
+                    
+                    {/* Image with Industrial Border */}
+                    <div className="relative overflow-hidden bg-white border border-black/5 transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-black/5">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 flex items-center gap-3">
+                          <Layers size={12} className="text-[#d4af37]" />
+                          <span className="text-[8px] font-black uppercase tracking-widest">{project.sector}</span>
+                      </div>
+                    </div>
+
+                    {/* Meta Data */}
+                    <div className="mt-10 px-2 flex justify-between items-end">
+                      <div>
+                        <p className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-3">{project.location}</p>
+                        <h3 className="text-4xl font-serif italic text-black leading-none group-hover:text-[#d4af37] transition-colors">
+                            {project.title}
+                        </h3>
+                      </div>
+                      <div className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+                        <ArrowUpRight size={18} />
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </main>
+
+        {/* --- SECTION 3: LIGHT FOOTER --- */}
+        <footer className="py-60 text-center border-t border-black/5">
+          <div className="container mx-auto px-6">
+            <span className="text-[10px] font-black uppercase tracking-[0.8em] text-gray-300 mb-12 block">Inquiries</span>
+            <h2 className="text-6xl md:text-[10rem] font-serif italic tracking-tighter leading-[0.8] mb-16">
+               Start the <br /> <span className="text-[#d4af37] not-italic">Dialogue</span>.
+            </h2>
+            <Link to="/contact" className="group inline-flex items-center gap-10 bg-[#1a1a1a] text-white px-20 py-8 hover:bg-[#d4af37] transition-all duration-500">
+               <span className="text-[11px] font-black uppercase tracking-[0.6em]">Connect</span>
+               <Plus className="group-hover:rotate-90 transition-transform duration-500" />
+            </Link>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 };

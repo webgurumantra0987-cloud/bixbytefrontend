@@ -139,10 +139,10 @@ const Footer = () => {
           <span>© 2026 Bixbite Studio. All Rights Reserved.</span>
 
           <div className="flex gap-8">
-            <Link to="#" className="hover:text-white transition">
+            <Link to="/privacy-policy" className="hover:text-white transition">
               Privacy Policy
             </Link>
-            <Link to="#" className="hover:text-white transition">
+            <Link to="/terms-of-use" className="hover:text-white transition">
               Terms
             </Link>
             <Link

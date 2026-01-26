@@ -9,6 +9,7 @@ import HeroSection from '../../../components/common/HeroSection';
 import ServiceFeatureCards from '../../../components/common/ServiceFeatureCards';
 import ServiceCTA from '../../../components/common/ServiceCTA';
 import FAQSection from '../../../components/common/FAQSection';
+import { processItems, spaceFAQ } from '../../../Data';
 
 const SpacePlanningandLayout = () => {
   

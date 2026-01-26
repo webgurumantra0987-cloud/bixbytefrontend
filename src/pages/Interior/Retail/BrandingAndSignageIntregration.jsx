@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import ServicePageMinimal from '../../../components/common/ServicePageMinimal';
+import { brandingData } from '../../../Data';
+import ServicePageBuilder from '../../../components/common/ServicePageBuilder';
 
 const BrandingAndSignageIntregration = () => {
   return (
-    <div>BrandingAndSignageIntregration</div>
-  )
+    <ServicePageBuilder 
+      data={brandingData} 
+      accentColor="#283593" // Deep Cobalt Blue
+    />
+  );
 }
 
-export default BrandingAndSignageIntregration
+export default BrandingAndSignageIntregration;

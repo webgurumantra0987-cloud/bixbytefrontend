@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import ServicePageBuilder from '../../../components/common/ServicePageBuilder';
+import { spaceSavingData } from '../../../Data';
 
 const SpaceSavingSolutions = () => {
   return (
-    <div>SpaceSavingSolutions</div>
-  )
+    <ServicePageBuilder 
+      data={spaceSavingData} 
+      accentColor="#4a69bd" 
+    />
+  );
 }
 
-export default SpaceSavingSolutions
+
+export default SpaceSavingSolutions;
