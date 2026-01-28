@@ -261,6 +261,25 @@ export const servicesExpertise = [
     fullDescription: "Creating destination experiences through architecture. We specialize in luxury resorts and boutique hotels where every square foot is designed for guest satisfaction."
   }
 ];
+
+export const bixbiteFAQ = [
+  {
+    q: "How does Bixbite minimize construction delays?",
+    a: "We utilize our 'Integrated Turnkey Model.' By overlapping the procurement phase with early-stage site preparation and using BIM (Building Information Modeling), we identify structural bottlenecks before ground is ever broken, typically saving 15-20% on traditional project timelines."
+  },
+  {
+    q: "Why choose an 'Innovation Studio' over a traditional contractor?",
+    a: "Traditional contractors focus on execution; Bixbite focuses on evolution. We provide a single point of accountability that bridges the gap between complex architectural theory and on-site mechanical reality. You get the beauty of a designer with the reliability of an engineer."
+  },
+  {
+    q: "How involved do I need to be in the design process?",
+    a: "We practice 'Collaborative Curation.' While we handle the technical heavy lifting, you are involved in three key 'Legacy Sessions' where we finalize spatial flow, material palettes, and lighting narratives. We take the stress out of the details while keeping you in the driver’s seat."
+  },
+  {
+    q: "Is Bixbite equipped for sustainable/green building mandates?",
+    a: "Every Bixbite project begins with a 'Climatic Audit.' We prioritize natural ventilation, thermal massing, and solar-responsive design. Our goal is to reduce your structure's long-term carbon footprint without compromising on the luxury of the experience."
+  }
+];
   export const projects = [
     // EXTERIOR - 12 ITEMS
     { id: 1, title: "The Obsidian Villa", category: "Exterior", location: "Athens, Greece", year: "2024", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" },

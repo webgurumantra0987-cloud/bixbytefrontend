@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { ArrowUpRight, Ruler, ShieldCheck, Users, Sparkles, Target, Eye, Plus, MapPin, Sun } from "lucide-react";
 import { Link } from 'react-router-dom';
+import { bixbiteFAQ } from "../Data";
+import FAQSection from "../components/common/FAQSection";
+import ServiceCTA from "../components/common/ServiceCTA";
 
 const About = () => {
   // Reset scroll to top on component mount
@@ -21,6 +24,7 @@ const About = () => {
     { step: "03", icon: Ruler, title: "Synthesis", text: "8K visualizations and performance blueprints." },
     { step: "04", icon: Plus, title: "Realization", text: "Indistinguishable from the initial concept." }
   ];
+
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen selection:bg-[#d4af37] selection:text-white font-sans scroll-smooth overflow-x-hidden text-[#1a1a1a]">
@@ -149,19 +153,17 @@ const About = () => {
         </div>
       </section>
 
-      {/* --- FOOTER: ELEGANT CTA --- */}
-      <footer className="py-32 text-center border-t border-black/5 bg-white">
-         <div className="container mx-auto px-6">
-            <h2 className="text-4xl md:text-5xl font-serif italic tracking-tighter leading-none mb-12">
-               Craft Your <span className="text-[#d4af37]">Legacy</span>.
-            </h2>
-            <Link to="/contact" className="group inline-flex items-center gap-6 bg-[#0A0A0A] text-white px-12 py-5 hover:bg-[#d4af37] hover:text-black transition-all duration-500">
-               <span className="text-[9px] font-black uppercase tracking-[0.4em]">Begin Consultation</span>
-               <Plus className="group-hover:rotate-90 transition-transform" size={14} />
-            </Link>
-         </div>
-      </footer>
+      <FAQSection 
+  items={bixbiteFAQ} 
+  title="Structural Inquiries" 
+  subtitle="The Dialogue" 
+/>
+
+   <ServiceCTA/>
     </div>
+
+
+
   );
 };
 

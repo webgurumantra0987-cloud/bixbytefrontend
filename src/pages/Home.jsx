@@ -7,6 +7,9 @@ import { Process } from '../components/home/Process';           // New
 import { Testimonial } from '../components/home/Testimonial';   // New
 import { PartnersContact } from '../components/home/PartnersContact';
 import Footer from '../components/layout/Footer';               // Recommended
+import FAQSection from '../components/common/FAQSection';
+import { bixbiteFAQ } from '../Data';
+import ServiceCTA from '../components/common/ServiceCTA';
 
 const Home = () => {
   // Logic for scroll-based animations or navbar states
@@ -43,6 +46,15 @@ const Home = () => {
       {/* 7. Partners & Contact: Final CTA */}
       <PartnersContact />
       
+
+   <FAQSection 
+  items={bixbiteFAQ} 
+  title="Structural Inquiries" 
+  subtitle="The Dialogue" 
+/>
+
+
+<ServiceCTA/>
     
     </main>
   );

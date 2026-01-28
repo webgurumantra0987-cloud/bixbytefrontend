@@ -9,8 +9,8 @@ const FAQSection = ({ items, title = "Frequently Asked Questions", subtitle = "I
   };
 
   return (
-    <section className="py-24 max-w-4xl mx-auto px-6">
-      <div className="text-center mb-16">
+    <section className=" max-w-4xl mx-auto px-6">
+      <div className="text-center mb-10">
         <span className="text-[#d4af37] text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">
           {subtitle}
         </span>
