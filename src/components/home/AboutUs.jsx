@@ -17,12 +17,13 @@ export const AboutUs = () => {
             transition={{ duration: 1, ease: "easeOut" }}
             className="lg:col-span-5 relative"
           >
-            {/* Architectural Image Frame */}
+            {/* Architectural Image Frame - Removed Grayscale */}
             <div className="aspect-[4/5] overflow-hidden rounded-sm bg-gray-200 shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" 
                 alt="Bixbite Luxury Interior" 
-                className="w-full h-full object-cover brightness-105 hover:scale-105 transition-transform duration-1000 grayscale hover:grayscale-0"
+                className="w-full h-full object-cover brightness-100 hover:scale-105 transition-transform duration-1000"
+                /* Image now renders in full color without hover grayscale transitions */
               />
             </div>
          
@@ -54,7 +55,7 @@ export const AboutUs = () => {
               </p>
             </div>
 
-            {/* Feature Grid - Fixed colors and spacing */}
+            {/* Feature Grid - Original Olive Branding */}
             <div className="grid grid-cols-2 gap-12 pt-12 border-t border-gray-200">
               <div className="group cursor-default">
                 <p className="text-[#1a1a1a] text-2xl font-serif italic group-hover:text-[#828a1c] transition-colors">Bespoke Curation</p>

@@ -31,6 +31,7 @@ const Hero = () => {
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
             className="text-gray-600 text-lg leading-relaxed mb-10 max-w-md"
           >
             Bixbite is a premier <strong>architectural construction and interior design firm</strong>. 
@@ -49,28 +50,44 @@ const Hero = () => {
 
         {/* IMAGE & STAT BLOCK */}
         <div className="lg:col-span-6 relative h-[500px] lg:h-auto">
-          <div className="absolute inset-0 w-full h-[90%] overflow-hidden shadow-2xl">
+          <motion.div 
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5 }}
+            className="absolute inset-0 w-full h-[90%] overflow-hidden shadow-2xl"
+          >
             <img 
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000" 
-              className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
-              alt="Architecture"
+              className="w-full h-full object-cover brightness-100" 
+              /* Removed grayscale and hover effects */
+              alt="Luxury Architecture"
             />
-          </div>
+          </motion.div>
 
           {/* Floating 'Bespoke' Card */}
-          <div className="absolute top-1/2 -left-10 bg-white border border-gray-100 p-8 shadow-2xl hidden xl:flex flex-col items-center min-w-[180px]">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
+            className="absolute top-1/2 -left-10 bg-white border border-gray-100 p-8 shadow-2xl hidden xl:flex flex-col items-center min-w-[180px]"
+          >
              <Paintbrush className="text-[#828a1c] mb-3" size={24} />
              <p className="text-[10px] font-black uppercase tracking-widest text-[#1a1a1a] text-center">Bespoke <br /> Interiors</p>
-          </div>
+          </motion.div>
 
           {/* Solid Brown Stat Box */}
-          <div className="absolute bottom-0 right-0 w-4/5 lg:w-2/3 bg-[#6b4411] p-10 lg:p-14 text-white shadow-2xl z-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="absolute bottom-0 right-0 w-4/5 lg:w-2/3 bg-[#6b4411] p-10 lg:p-14 text-white shadow-2xl z-20"
+          >
              <Building2 className="text-[#828a1c] mb-6" size={32} />
              <div className="flex items-end gap-4">
                 <p className="text-6xl font-serif italic leading-none">150+</p>
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#828a1c] pb-1">Projects <br /> Handed Over</p>
              </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

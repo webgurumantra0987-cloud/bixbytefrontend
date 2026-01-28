@@ -10,7 +10,7 @@ export const Services = () => {
     <section className="py-24 bg-[#FAF9F6] selection:bg-[#828a1c] selection:text-white">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
         
-        {/* Header Logic - Updated to Brand Colors */}
+        {/* Header Logic */}
         <div className="mb-12 md:mb-16 flex flex-col md:flex-row justify-between items-end gap-6 border-b border-gray-200 pb-8">
           <div className="max-w-2xl">
             <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em] mb-4 block">Our Expertise</span>
@@ -30,11 +30,12 @@ export const Services = () => {
               className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] cursor-pointer bg-white"
               onClick={() => setSelectedService(service)}
             >
-              {/* Card Image with subtle grayscale to color transition */}
+              {/* Card Image - Removed grayscale and pulse animations */}
               <img 
                 src={service.image} 
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
                 alt={service.title}
+                /* Image is now full color by default */
               />
               
               {/* Category Badge - Olive Green */}
@@ -44,11 +45,11 @@ export const Services = () => {
                 </span>
               </div>
 
-              {/* Refined Content Overlay - High Contrast */}
+              {/* Content Overlay */}
               <div className="absolute inset-x-5 bottom-5 bg-[#1a1a1a]/80 backdrop-blur-md border border-white/10 rounded-[1.5rem] p-8 text-white transform transition-all duration-500 group-hover:bg-[#828a1c]/90">
                 <div className="flex justify-between items-start mb-3">
                     <p className="text-[#828a1c] group-hover:text-white text-[9px] font-black uppercase tracking-[0.3em] transition-colors">Project — {service.id}</p>
-                    <Sparkles size={14} className="text-white opacity-0 group-hover:opacity-100 transition-opacity animate-pulse" />
+                    <Sparkles size={14} className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <h3 className="text-3xl font-serif italic mb-6 leading-none tracking-tight">{service.title}</h3>
                 
@@ -84,7 +85,6 @@ export const Services = () => {
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               className="relative w-full max-w-6xl bg-white rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row h-auto max-h-[90vh]"
             >
-              {/* Close Icon */}
               <button 
                 onClick={() => setSelectedService(null)}
                 className="absolute top-8 right-8 z-10 p-3 bg-white shadow-xl rounded-full hover:bg-[#828a1c] hover:text-white transition-all group"
@@ -92,12 +92,10 @@ export const Services = () => {
                 <X size={20} className="text-black group-hover:text-white" />
               </button>
 
-              {/* Left Side: Image */}
-              <div className="w-full lg:w-1/2 h-80 lg:h-auto">
+              <div className="w-full lg:w-1/2 h-80 lg:h-auto overflow-hidden">
                 <img src={selectedService.image} className="w-full h-full object-cover" alt={selectedService.title} />
               </div>
 
-              {/* Right Side: Copy */}
               <div className="w-full lg:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white overflow-y-auto">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-[1px] bg-[#828a1c]"></div>
