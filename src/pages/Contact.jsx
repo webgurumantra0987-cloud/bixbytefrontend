@@ -5,12 +5,8 @@ import { Mail, Phone, MapPin, ArrowRight, Globe, Clock } from 'lucide-react';
  import axios from 'axios';
 const Contact = () => {
   const [isLoaded, setIsLoaded] = useState(false);
-
-
    const apiUrl = 'https://apibixbyte.webgurumantra.com/api/';
-
    const { register, handleSubmit, formState: { errors } } = useForm();
-
   useEffect(() => {
     setIsLoaded(true);
     window.scrollTo(0, 0);
@@ -22,7 +18,7 @@ const Contact = () => {
       
        if (response.status === 201) {
          toast.success("✅ Contact Submitted Successfully");
-       } else {
+       } else { 
          toast.error("❌ Contact Submission Failed");
        }    
     }
