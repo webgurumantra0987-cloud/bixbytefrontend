@@ -87,6 +87,7 @@ const OurWork = () => {
           ))}
         </div>
 
+        
         {/* Optional Action Bar */}
         <div className="mt-16 pt-8 border-t border-black/5 flex justify-center">
             <button className="group text-[10px] font-black uppercase tracking-[0.4em] flex items-center gap-4 hover:text-[#828a1c] transition-colors">

@@ -16,7 +16,7 @@ export const PartnersContact = () => {
       </div>
 
       {/* Brand Partners Bar */}
-      <div className="py-20 border-b border-gray-200 relative z-10">
+      <div className=" border-b border-gray-200 relative z-10">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
           <p className="text-gray-400 text-[9px] font-black uppercase tracking-[0.6em] text-center mb-12">
             Global Recognition & Press
