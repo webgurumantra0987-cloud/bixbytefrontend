@@ -10,6 +10,7 @@ import Footer from '../components/layout/Footer';               // Recommended
 import FAQSection from '../components/common/FAQSection';
 import { bixbiteFAQ } from '../Data';
 import ServiceCTA from '../components/common/ServiceCTA';
+import OurWork from '../components/home/OurWork';
 
 const Home = () => {
   // Logic for scroll-based animations or navbar states
@@ -36,7 +37,8 @@ const Home = () => {
 
       {/* 4. Services: Expertise Grid */}
       <Services />
-
+      
+      <OurWork/>
       {/* 5. Process: Methodology (Light Section) */}
       <Process />
 
