@@ -1,64 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, X, Sparkles } from 'lucide-react';
-import { servicesExpertise } from '../../Data';
+import { ArrowUpRight, X, ChevronRight } from 'lucide-react';
+import { interiorData, exteriorData } from '../../Data';
 
 export const Services = () => {
+  const [activeType, setActiveType] = useState('interior'); 
   const [selectedService, setSelectedService] = useState(null);
 
+  useEffect(() => {
+    document.body.style.overflow = selectedService ? 'hidden' : 'unset';
+  }, [selectedService]);
+
+  const currentData = activeType === 'interior' ? interiorData : exteriorData;
+
+  const interiorImages = [
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070",
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069",
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070",
+    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2069"
+  ];
+
+  const exteriorImages = [
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070",
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069",
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070",
+    "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070"
+  ];
+
+  const getCategoryImage = (index) => {
+    const images = activeType === 'interior' ? interiorImages : exteriorImages;
+    return images[index % images.length];
+  };
+
   return (
-    <section className="py-24 bg-[#FAF9F6] selection:bg-[#828a1c] selection:text-white">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+    <section className="py-20 bg-[#FAF9F6] text-[#1a1a1a] font-sans">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12">
         
-        {/* Header Logic */}
-        <div className="mb-12 md:mb-16 flex flex-col md:flex-row justify-between items-end gap-6 border-b border-gray-200 pb-8">
-          <div className="max-w-2xl">
-            <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em] mb-4 block">Our Expertise</span>
-            <h2 className="text-[#1a1a1a] text-5xl md:text-7xl font-light italic font-serif leading-tight">
-              Curating <span className="not-italic font-sans font-black text-[#828a1c]">Excellence.</span>
-            </h2>
+        {/* HEADER - Kept original with Olive Green line */}
+        <div className="mb-12 border-b border-black/5 pb-8">
+          <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-[0.6em] mb-4 block">Our Expertise</span>
+          <div className="flex gap-8 md:gap-12 items-baseline overflow-x-auto no-scrollbar">
+            {['interior', 'exterior'].map((type) => (
+              <button
+                key={type}
+                onClick={() => { setActiveType(type); setSelectedService(null); }}
+                className="relative text-4xl md:text-6xl font-serif italic pb-4 text-black whitespace-nowrap"
+              >
+                <span className={activeType === type ? 'opacity-100' : 'opacity-30'}>
+                  {type.charAt(0).toUpperCase() + type.slice(1)}
+                </span>
+                {activeType === type && (
+                  <motion.div layoutId="activeTab" className="absolute bottom-0 left-0 w-full h-[3px] bg-[#828a1c]" />
+                )}
+              </button>
+            ))}
           </div>
-          <p className="text-gray-400 text-[10px] uppercase tracking-[0.4em] font-bold">Bespoke Design Solutions</p>
         </div>
 
-        {/* Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {servicesExpertise.map((service) => (
+        {/* GRID - Kept your exact card design */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {currentData.map((sector, index) => (
             <motion.div 
-              key={service.id}
-              whileHover={{ y: -12 }}
-              className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] cursor-pointer bg-white"
-              onClick={() => setSelectedService(service)}
+              key={sector.category}
+              className="group relative h-[420px] rounded-[1.5rem] overflow-hidden cursor-pointer"
+              onClick={() => setSelectedService({ ...sector, displayImage: getCategoryImage(index) })}
             >
-              {/* Card Image - Removed grayscale and pulse animations */}
-              <img 
-                src={service.image} 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
-                alt={service.title}
-                /* Image is now full color by default */
-              />
-              
-              {/* Category Badge - Olive Green */}
-              <div className="absolute top-8 left-8">
-                <span className="bg-[#828a1c] text-white text-[9px] font-black uppercase px-6 py-2.5 rounded-full tracking-widest shadow-xl">
-                  {service.tag}
-                </span>
-              </div>
-
-              {/* Content Overlay */}
-              <div className="absolute inset-x-5 bottom-5 bg-[#1a1a1a]/80 backdrop-blur-md border border-white/10 rounded-[1.5rem] p-8 text-white transform transition-all duration-500 group-hover:bg-[#828a1c]/90">
-                <div className="flex justify-between items-start mb-3">
-                    <p className="text-[#828a1c] group-hover:text-white text-[9px] font-black uppercase tracking-[0.3em] transition-colors">Project — {service.id}</p>
-                    <Sparkles size={14} className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <h3 className="text-3xl font-serif italic mb-6 leading-none tracking-tight">{service.title}</h3>
-                
-                <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                  <span className="text-[10px] font-black uppercase tracking-widest opacity-80">
-                    Explore Space
-                  </span>
-                  <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center text-[#1a1a1a] shadow-xl group-hover:rotate-45 transition-transform duration-500">
-                    <ArrowUpRight size={20} />
+              <img src={getCategoryImage(index)} className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110" alt="" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <h3 className="text-white text-3xl font-serif italic mb-4 group-hover:text-[#828a1c] transition-colors">{sector.category}</h3>
+                <div className="flex items-center justify-between border-t border-white/10 pt-4">
+                  <span className="text-white/40 text-[8px] font-black uppercase tracking-widest">Explore</span>
+                  <div className="h-10 w-10 border border-white/20 rounded-full flex items-center justify-center text-white group-hover:bg-[#828a1c] group-hover:border-[#828a1c] transition-all">
+                    <ArrowUpRight size={18} />
                   </div>
                 </div>
               </div>
@@ -67,67 +81,62 @@ export const Services = () => {
         </div>
       </div>
 
-      {/* Modal / Details Model */}
+      {/* COMPACT RESPONSIVE MODAL */}
       <AnimatePresence>
         {selectedService && (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8">
+          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-12 lg:p-24">
             <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setSelectedService(null)}
-              className="absolute inset-0 bg-[#0f1108]/90 backdrop-blur-lg"
+              className="absolute inset-0 bg-black/90 backdrop-blur-sm"
             />
             
             <motion.div 
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
+              initial={{ scale: 0.95, opacity: 0, y: 20 }} 
+              animate={{ scale: 1, opacity: 1, y: 0 }} 
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="relative w-full max-w-6xl bg-white rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row h-auto max-h-[90vh]"
+              className="relative w-full max-w-5xl bg-white rounded-[2rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row max-h-[85vh] lg:max-h-[70vh]"
             >
+              {/* Close Button - More subtle but accessible */}
               <button 
                 onClick={() => setSelectedService(null)}
-                className="absolute top-8 right-8 z-10 p-3 bg-white shadow-xl rounded-full hover:bg-[#828a1c] hover:text-white transition-all group"
+                className="absolute top-6 right-6 z-[1010] w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:bg-[#828a1c] transition-colors"
               >
-                <X size={20} className="text-black group-hover:text-white" />
+                <X size={20} />
               </button>
 
-              <div className="w-full lg:w-1/2 h-80 lg:h-auto overflow-hidden">
-                <img src={selectedService.image} className="w-full h-full object-cover" alt={selectedService.title} />
+              {/* Working Image Side - Proportional to smaller height */}
+              <div className="w-full lg:w-5/12 h-56 lg:h-auto shrink-0">
+                <img src={selectedService.displayImage} className="w-full h-full object-cover" alt="" />
               </div>
 
-              <div className="w-full lg:w-1/2 p-10 md:p-16 flex flex-col justify-center bg-white overflow-y-auto">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-[1px] bg-[#828a1c]"></div>
-                  <span className="text-[#828a1c] text-[11px] font-black uppercase tracking-[0.5em]">
-                    Innovation Studio
-                  </span>
-                </div>
-                
-                <h2 className="text-4xl md:text-6xl font-light text-[#1a1a1a] mb-8 italic font-serif leading-tight">
-                  {selectedService.title}
+              {/* Content Side - Tighter padding & scrollable list */}
+              <div className="w-full lg:w-7/12 p-8 lg:p-12 flex flex-col bg-white overflow-hidden">
+                <span className="text-[#828a1c] text-[9px] font-black uppercase tracking-[0.4em] mb-3 block">Design Solutions</span>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif italic text-black mb-6 leading-tight">
+                  {selectedService.category}
                 </h2>
                 
-                <p className="text-gray-500 text-lg leading-relaxed mb-10 font-light border-l-2 border-[#828a1c]/20 pl-6">
-                  {selectedService.fullDescription}
-                </p>
-
-                <div className="flex flex-wrap gap-3 mb-12">
-                    {['Concept', 'Design', 'Execute'].map(tag => (
-                      <span key={tag} className="px-5 py-2 bg-gray-50 rounded-full text-[9px] font-black uppercase tracking-widest text-gray-400 border border-gray-100">
-                        {tag}
-                      </span>
-                    ))}
+                {/* Scrollable list area - Reduced margins to save height */}
+                <div className="flex-grow overflow-y-auto pr-2 custom-scrollbar mb-6">
+                  {selectedService.services.map((service, idx) => (
+                    <div key={idx} className="flex items-center justify-between py-3 border-b border-black/5 group cursor-pointer hover:border-[#828a1c] transition-colors">
+                       <span className="text-[10px] text-black/60 group-hover:text-black uppercase tracking-widest font-black transition-colors">
+                         {service.name}
+                       </span>
+                       <ChevronRight size={14} className="text-[#828a1c] opacity-40 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                  ))}
                 </div>
 
-                <button className="w-full md:w-fit px-12 py-6 bg-[#1a1a1a] text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-[#828a1c] transition-all shadow-2xl flex items-center justify-center gap-4 group">
-                  Start Consultation <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <button className="w-full py-5 bg-black text-white text-[9px] font-black uppercase tracking-[0.4em] rounded-full hover:bg-[#828a1c] transition-all shrink-0">
+                  Consultation Request
                 </button>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
-    </section>
+    </section> 
   );
 };

@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <section className="relative h-screen w-full flex items-center overflow-hidden bg-[#050505]">
       
-      {/* 1. BACKGROUND SLIDER (FULL SCREEN) */}
+      
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -33,7 +33,7 @@ const Hero = () => {
             transition={{ duration: 1.2, ease: "linear" }}
             className="absolute inset-0"
           >
-            {/* Ken Burns Effect: Subtle zoom-in */}
+            
             <motion.img 
               src={slides[current]} 
               initial={{ scale: 1.1 }}
