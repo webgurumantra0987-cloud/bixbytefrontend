@@ -138,7 +138,7 @@ export const interiorData = [
 
 export const exteriorData = [
   {
-    category: "Commercial Exterior",
+    category: "Commercial ",
     icon: ShieldCheck,
     services: [
       { name: "Building façade design & elevation", link: "building-facade" },
@@ -156,7 +156,7 @@ export const exteriorData = [
     ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
-    category: "Corporate Exterior",
+    category: "Corporate ",
     icon: Paintbrush,
     services: [
       { name: "Corporate identity-based exterior design", link: "corporate-identity" },
@@ -174,7 +174,7 @@ export const exteriorData = [
     ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
-    category: "Residential Exterior",
+    category: "Residential ",
     icon: Compass,
     services: [
       { name: "Home elevation & façade design", link: "home-elevation" },
@@ -192,7 +192,7 @@ export const exteriorData = [
     ].map((s, i) => ({ ...s, badge: getBadge(i) }))
   },
   {
-    category: "Retail Exterior",
+    category: "Retail ",
     icon: Store,
     services: [
       { name: "Retail shopfront & façade design", link: "retail-facade" },

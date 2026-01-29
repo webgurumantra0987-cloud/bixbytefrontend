@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12 w-full grid lg:grid-cols-12 gap-0 flex-grow">
         
         {/* TEXT CONTENT */}
-        <div className="lg:col-span-6 flex flex-col justify-center z-10 pb-16 lg:pb-0 pr-0 lg:pr-20">
+        <div className="lg:col-span-6 sm:justify-center  z-10 pb-16 lg:pb-0 pr-0 lg:pr-20">
           <motion.div 
             initial={{ opacity: 0, x: -20 }} 
             animate={{ opacity: 1, x: 0 }}

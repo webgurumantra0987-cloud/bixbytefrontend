@@ -1,129 +1,138 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Instagram, Linkedin, Twitter, Facebook, ArrowUpRight, MapPin, Phone, ShieldCheck } from 'lucide-react';
-import { companylogo } from "../../image";
+import { 
+  ArrowUpRight, 
+  Plus, 
+  Minus, 
+  MapPin, 
+  Phone 
+} from 'lucide-react';
+import { exteriorData, interiorData } from '../../Data';
 
 const Footer = () => {
-  const services = [
-    "Residential Interiors", "Commercial Design", "Retail & Boutique", 
-    "Lighting Design", "Turnkey Solutions", "Architectural Planning", 
-    "Landscape Design", "Furniture Curation", "Project Management",
-    "Vastu Consultation", "Renovation", "3D Visualization"
-  ];
+  const [activeTab, setActiveTab] = useState('interior'); 
+  const [openSector, setOpenSector] = useState(null);
 
-  const socialLinks = [
-    { Icon: Instagram, href: "#" },
-    { Icon: Linkedin, href: "#" },
-    { Icon: Twitter, href: "#" },
-    { Icon: Facebook, href: "#" }
-  ];
+  const currentData = activeTab === 'interior' ? interiorData : exteriorData;
+
+  const toggleSector = (category) => {
+    setOpenSector(openSector === category ? null : category);
+  };
 
   return (
-    /* Background adjusted to a deeper, richer Olive #5d6314 */
-    <footer className="bg-[#5d6314] pt-20 pb-10 px-6 lg:px-12 border-t border-white/10 text-white">
+    <footer className="bg-[#0F1113]  pb-6 px-6 sm:px-10 lg:px-20 text-white font-sans selection:bg-white selection:text-black">
       <div className="max-w-[1600px] mx-auto">
         
-        {/* TOP SECTION: BRANDING & CONTACT */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
-          
-          {/* 1. Brand Identity */}
-          <div className="lg:col-span-4">
-            <img 
-              src={companylogo} 
-              alt="Bixbite" 
-              className="h-10 w-auto mb-6 brightness-0 invert opacity-90" 
-            />
-            <p className="text-white/70 text-[9px] uppercase tracking-[0.4em] font-medium leading-relaxed max-w-[280px]">
-              Engineering Precision, Bespoke Aesthetics. <br /> A Bixbite Innovation Studio Venture.
-            </p>
+        {/* HEADER: TAB NAVIGATION */}
+        <div className="flex flex-row items-baseline gap-4 mb-8">
+          <h2 className="text-white text-[7px] font-black uppercase tracking-[0.5em]">Expertise</h2>
+          <div className="flex gap-4">
+            {['interior', 'exterior'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => { 
+                  setActiveTab(tab); 
+                  setOpenSector(null); 
+                }}
+                className={`text-lg md:text-xl font-serif italic transition-none ${
+                  activeTab === tab ? 'text-white' : 'text-white opacity-20'
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
           </div>
+        </div>
 
-          {/* 2. Office Details */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-black/40 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Studio Headquarters</h4>
-            <div className="flex items-start gap-3 text-white">
-              <MapPin size={14} className="mt-1 shrink-0 opacity-60" />
-              <p className="text-[11px] font-bold leading-relaxed tracking-wider uppercase">
-                Sector 44, Gurgaon, <br /> Haryana 122003, India
-              </p>
-            </div>
-            <div className="flex items-center gap-3 text-white hover:text-black transition-colors duration-300">
-              <Phone size={14} className="opacity-60" />
-              <a href="tel:+919999999999" className="text-[11px] font-bold tracking-widest">+91 9999 999 999</a>
-            </div>
-          </div>
+        {/* MAIN CONTENT: ACCORDION LIST */}
+        <div className="min-h-[200px] space-y-1">
+          {currentData.map((sector) => {
+            const isOpen = openSector === sector.category;
+            return (
+              <div key={sector.category} className="overflow-hidden">
+                <button
+                  onClick={() => toggleSector(sector.category)}
+                  className="w-full py-2 flex justify-between items-center text-left"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="text-white font-mono text-[7px] uppercase tracking-tighter opacity-60">
+                      {activeTab === 'interior' ? 'INT' : 'EXT'} — 0{currentData.indexOf(sector) + 1}
+                    </span>
+                    <h3 className="text-xs md:text-sm lg:text-base uppercase tracking-[0.25em] font-bold text-white">
+                      {sector.category}
+                    </h3>
+                  </div>
+                  <div className="text-white">
+                    {isOpen ? <Minus size={12} strokeWidth={2} /> : <Plus size={12} strokeWidth={2} />}
+                  </div>
+                </button>
 
-          {/* 3. Registration Info */}
-          <div className="lg:col-span-2">
-            <h4 className="text-black/40 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Registration</h4>
-            <div className="space-y-2 text-white/80">
-              <div className="flex items-center gap-2">
-                <ShieldCheck size={12} className="opacity-60" />
-                <span className="text-[9px] font-bold tracking-widest uppercase">GST: 07AAACB1234F1Z5</span>
+                {isOpen && (
+                  <div className="pb-6 pt-1 animate-in fade-in duration-300">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-2">
+                      {sector.services.map((service, idx) => (
+                        <Link
+                          key={idx}
+                          to={`/services/${service.link}`}
+                          className="flex items-center justify-between py-0.5"
+                        >
+                          <div className="flex items-center gap-2">
+                            <span className="text-[7px] font-mono text-white opacity-40">
+                              {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                            </span>
+                            <span className="text-[8px] text-white tracking-[0.2em] font-bold uppercase">
+                              {service.name}
+                            </span>
+                          </div>
+                          <ArrowUpRight size={8} className="text-white opacity-50 shrink-0" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-              <p className="text-[9px] font-bold tracking-widest uppercase ml-5">CIN: U74140DL2026PTC123456</p>
+            );
+          })}
+        </div>
+
+        {/* FOOTER BOTTOM: ONE ROW ON DESKTOP */}
+        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          
+          {/* Combined Info Row for Desktop */}
+          <div className="flex flex-row flex-wrap items-center gap-x-8 gap-y-3">
+            {/* Address & No */}
+            <div className="flex items-center gap-2 text-[7px] text-white tracking-[0.3em] uppercase font-bold">
+              <MapPin size={9} /> Sector 44, Gurgaon
+            </div>
+            <div className="flex items-center gap-2 text-[7px] text-white tracking-[0.3em] uppercase font-bold border-r border-white/20 pr-8 hidden lg:flex">
+              <Phone size={9} /> +91 9999 999 999
+            </div>
+            {/* Mobile Phone (no border) */}
+            <div className="flex lg:hidden items-center gap-2 text-[7px] text-white tracking-[0.3em] uppercase font-bold">
+              <Phone size={9} /> +91 9999 999 999
+            </div>
+
+            {/* Legal Links (Integrated in same row) */}
+            <div className="flex flex-row flex-wrap gap-x-6 text-white text-[7px] font-black uppercase tracking-[0.4em]">
+              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms">Terms of Service</Link>
+              <Link to="/conditions">Conditions</Link>
+              <span className="opacity-20">© 2026 Bixbite</span>
             </div>
           </div>
 
-          {/* 4. Small Email Link */}
-          <div className="lg:col-span-3 flex flex-col items-start lg:items-end">
-            <h4 className="text-black/40 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Direct Link</h4>
-            <a 
-              href="mailto:hello@bixbite.com" 
-              className="text-white text-xl md:text-2xl font-serif italic hover:text-black transition-all duration-500 underline underline-offset-8 decoration-white/20"
-            >
-              hello@bixbite.com
-            </a>
-          </div>
-        </div>
-
-        {/* SERVICE GRID: Clean Horizontal Lines */}
-        <div className="py-12 border-y border-white/10 mb-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-6">
-            {services.map((service) => (
-              <Link 
-                key={service} 
-                to="/gallery" 
-                className="text-white/60 text-[9px] font-bold uppercase tracking-[0.15em] hover:text-white hover:translate-x-1 transition-all"
-              >
-                {service}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* BOTTOM: SOCIALS & COPYRIGHT */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          
-          {/* Naked Floating Icons */}
-          <div className="flex gap-10 items-center">
-            {socialLinks.map(({ Icon, href }, i) => (
-              <a 
-                key={i} 
-                href={href} 
-                className="text-white/60 hover:text-white hover:scale-110 transition-all duration-300"
-              >
-                <Icon size={20} strokeWidth={1.5} />
-              </a>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-6 text-[8px] font-black text-white/40 uppercase tracking-[0.4em]">
-             <span>© 2026 Bixbite Innovation Studio</span>
-             <Link to="/privacy" className="hover:text-white transition-opacity">Privacy</Link>
-             <Link to="/terms" className="hover:text-white transition-opacity">Terms</Link>
-          </div>
-          
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
-            className="group flex items-center gap-4 text-white"
+          {/* Top Button stays on Right */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-2 text-white shrink-0"
           >
-            <span className="text-[9px] font-black uppercase tracking-[0.4em] opacity-50 group-hover:opacity-100 transition-opacity">Back to Top</span>
-            <div className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-[#5d6314] transition-all duration-500">
-              <ArrowUpRight size={14} />
+            <span className="text-[7px] font-black uppercase tracking-[0.4em]">Top</span>
+            <div className="w-7 h-7 border border-white/20 rounded-full flex items-center justify-center">
+              <ArrowUpRight size={12} />
             </div>
           </button>
         </div>
+
       </div>
     </footer>
   );
