@@ -8,7 +8,7 @@ const stats = [
     suffix: 'Executed' 
   },
   { 
-    label: 'Cities Across India', 
+    label: 'Cities Across India',   
     value: '12', 
     suffix: 'Presence' 
   },
