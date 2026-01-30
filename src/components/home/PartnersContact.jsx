@@ -1,91 +1,119 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, ArrowUpRight, Globe } from 'lucide-react';
 import { ContactModal } from '../../models/ContactModal';
 
 export const PartnersContact = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const brands = ["ArchDigest", "Vogue Living", "Luxury Lifestyle", "Design Boom", "Elle Decor"];
+  
+  // High-end Architectural Brands
+  const brands = ["ARCHDIGEST", "VOGUE LIVING", "DESIGN BOOM", "ELLE DECOR", "DWELL", "LUXURY LIFESTYLE"];
 
   return (
-    <section className="bg-[#FAF9F6] relative overflow-hidden">
+    <section className="bg-white relative overflow-hidden font-sans">
       
-      {/* Dynamic Background Text (Watermark) - Reduced opacity for subtle branding */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 text-[22vw] font-black text-[#828a1c]/[0.03] select-none pointer-events-none uppercase tracking-tighter leading-none">
-        Bixbite
-      </div>
-
-      {/* Brand Partners Bar */}
-      <div className=" border-b border-gray-200 relative z-10">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-          <p className="text-gray-400 text-[9px] font-black uppercase tracking-[0.6em] text-center mb-12">
+      {/* 1. PARTNER SECTION: High-Contrast Marquee */}
+      <div className="py-16 border-y border-black/5 bg-[#FAF9F6]">
+        <div className="mb-10 text-center">
+          <span className="text-[#828a1c] text-[9px] font-black uppercase tracking-[0.6em]">
             Global Recognition & Press
-          </p>
-          <div className="flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
-            {brands.map((brand) => (
-              <span key={brand} className="text-[#1a1a1a] text-lg md:text-xl font-serif italic tracking-tight border-b-2 border-transparent hover:border-[#828a1c] py-2 cursor-default transition-all">
+          </span>
+        </div>
+        
+        {/* Infinite Scroll Effect */}
+        <div className="flex overflow-hidden group select-none">
+          <motion.div 
+            initial={{ x: 0 }}
+            animate={{ x: "-50%" }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="flex flex-nowrap gap-20 items-center min-w-full"
+          >
+            {[...brands, ...brands].map((brand, index) => (
+              <span 
+                key={index} 
+                className="text-black text-2xl md:text-4xl font-serif italic tracking-tighter opacity-100 hover:text-[#828a1c] transition-colors cursor-default whitespace-nowrap"
+              >
                 {brand}
               </span>
             ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* 2. MAIN CTA SECTION: Solid Black & Olive Green */}
+      <div className="relative py-32 px-6 lg:px-12">
+        {/* Large Decorative Text Behind Content */}
+        <div className="absolute top-10 left-10 opacity-[0.03] select-none pointer-events-none">
+          <h2 className="text-[25vw] font-black leading-none uppercase tracking-tighter">
+            Legacy
+          </h2>
+        </div>
+
+        <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+          
+          {/* Left Side: Bold Typography */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <h2 className="text-[#1a1a1a] text-6xl md:text-8xl font-black leading-[0.9] mb-8">
+              Begin Your <br /> 
+              <span className="italic font-serif text-[#828a1c] font-light">Architectural</span> <br />
+              <span className="tracking-tighter uppercase">Legacy.</span>
+            </h2>
+            <p className="text-black/60 text-lg max-w-md font-light leading-relaxed">
+              We translate abstract visions into physical landmarks. Secure your consultation for 2026/27 commissions.
+            </p>
+          </motion.div>
+
+          {/* Right Side: Interactive Action Box */}
+          <div className="flex flex-col gap-6">
+            
+            {/* Main Action Box */}
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="bg-black p-12 rounded-[2rem] text-white flex flex-col md:flex-row justify-between items-center gap-10 shadow-2xl"
+            >
+              <div className="space-y-2">
+                <span className="text-[#828a1c] text-[10px] font-black uppercase tracking-widest">Available Globally</span>
+                <h3 className="text-3xl font-serif italic">Curated Strategy Session</h3>
+              </div>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="h-20 w-20 bg-[#828a1c] rounded-full flex items-center justify-center hover:scale-110 transition-transform group"
+              >
+                <ArrowUpRight size={32} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </button>
+            </motion.div>
+
+            {/* Quick Contact Bar */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <a href="mailto:office@bixbite.in" className="flex items-center justify-between p-8 border border-black/10 rounded-2xl hover:border-[#828a1c] hover:bg-white transition-all group">
+                <div className="flex items-center gap-4">
+                  <div className="h-10 w-10 bg-[#828a1c]/10 rounded-full flex items-center justify-center text-[#828a1c]">
+                    <Mail size={18} />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-widest">OFFICE@BIXBITE.IN</span>
+                </div>
+                <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+
+              <a href="tel:+91987654321" className="flex items-center justify-between p-8 border border-black/10 rounded-2xl hover:border-[#828a1c] hover:bg-white transition-all group">
+                <div className="flex items-center gap-4">
+                  <div className="h-10 w-10 bg-[#828a1c]/10 rounded-full flex items-center justify-center text-[#828a1c]">
+                    <Phone size={18} />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-widest">+91 987 654 321</span>
+                </div>
+                <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main CTA Section */}
-      <div className="py-24 text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="max-w-6xl mx-auto px-6"
-        >
-          {/* Headline - Updated to Brand Olive Green */}
-          <h2 className="text-[#1a1a1a] text-5xl md:text-8xl font-light tracking-tighter leading-[1.1] mb-20">
-            Begin Your <br /> 
-            <span className="italic font-serif text-[#828a1c]">Architectural Legacy.</span>
-          </h2>
-
-          <div className="flex flex-col md:flex-row justify-center items-center gap-16 lg:gap-24">
-            
-            {/* Email Contact - Left */}
-            <div className="space-y-3 group cursor-pointer text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-2">
-                <Mail size={12} className="text-[#828a1c]" />
-                <p className="text-gray-400 text-[9px] font-black uppercase tracking-widest">Inquiries</p>
-              </div>
-              <a href="mailto:office@bixbite.in" className="block text-[#1a1a1a] text-xs font-bold tracking-[0.3em] hover:text-[#828a1c] transition-colors border-b-2 border-transparent hover:border-[#828a1c] pb-1 uppercase">
-                OFFICE@BIXBITE.IN
-              </a>
-            </div>
-            
-            {/* Main Action Button - Brand Olive Green Fill */}
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="group relative px-14 py-8 overflow-hidden bg-[#1a1a1a] rounded-sm transition-all hover:shadow-[0_30px_60px_rgba(130,138,28,0.2)] active:scale-95"
-            >
-              {/* Slide effect: Brand Olive Green */}
-              <span className="absolute inset-0 bg-[#828a1c] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
-              <span className="relative text-white group-hover:text-white text-[11px] font-black uppercase tracking-[0.5em] transition-colors flex items-center gap-4">
-                Start Consultation <ArrowUpRight size={16} />
-              </span>
-            </button>
-
-            {/* Phone Contact - Right */}
-            <div className="space-y-3 group cursor-pointer text-center md:text-right">
-              <div className="flex items-center justify-center md:justify-end gap-2">
-                <Phone size={12} className="text-[#828a1c]" />
-                <p className="text-gray-400 text-[9px] font-black uppercase tracking-widest">Global Desk</p>
-              </div>
-              <a href="tel:+91987654321" className="block text-[#1a1a1a] text-xs font-bold tracking-[0.3em] hover:text-[#828a1c] transition-colors border-b-2 border-transparent hover:border-[#828a1c] pb-1">
-                +91 987 654 321
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Modal Component */}
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );

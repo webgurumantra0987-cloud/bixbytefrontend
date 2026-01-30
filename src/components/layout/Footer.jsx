@@ -15,23 +15,30 @@ const Footer = () => {
       <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-20">
         
         {/* TOP SECTION: TAB NAVIGATION */}
-        <div className="mb-20 border-b border-black pb-8">
-          <div className="flex items-baseline gap-10">
+        <div className="mb-12 border-b border-black pb-6">
+          <div className="flex items-center gap-10">
             <span className="text-black text-[7px] font-black uppercase tracking-[0.5em] [writing-mode:vertical-lr] rotate-180">
               Expertise
             </span>
-            <div className="flex gap-12">
+            <div className="flex gap-10">
               {['interior', 'exterior'].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => { setActiveTab(tab); setOpenSector(null); }}
-                  className="relative group"
+                  className="relative group pb-2"
                 >
-                  <h2 className={`text-5xl md:text-7xl font-serif italic transition-all duration-500 ${
-                    activeTab === tab ? 'text-black' : 'text-black/10 hover:text-black/30'
+                  {/* Tabs: Black if inactive, Green if active */}
+                  <h2 className={`text-xs md:text-sm uppercase tracking-[0.4em] font-medium transition-colors duration-500 ${
+                    activeTab === tab ? 'text-[#828a1c]' : 'text-black hover:text-[#828a1c]'
                   }`}>
-                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                    {tab}
                   </h2>
+                  {activeTab === tab && (
+                    <motion.div 
+                      layoutId="footerTabUnderline" 
+                      className="absolute bottom-0 left-0 w-full h-[1px] bg-[#828a1c]" 
+                    />
+                  )}
                 </button>
               ))}
             </div>
@@ -41,7 +48,7 @@ const Footer = () => {
         {/* MAIN GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-32">
           
-          {/* LEFT COLUMN: ACCORDION (7 COLS) */}
+          {/* LEFT COLUMN: ACCORDION */}
           <div className="lg:col-span-7 border-t border-black/5">
             {currentData.map((sector, index) => {
               const isOpen = openSector === sector.category;
@@ -52,14 +59,19 @@ const Footer = () => {
                     className="w-full py-10 flex items-center justify-between group"
                   >
                     <div className="flex items-center gap-8">
-                      <span className="font-mono text-[8px] font-bold text-black/40">0{index + 1}</span>
-                      <h3 className={`text-xl md:text-2xl uppercase tracking-[0.2em] font-black transition-all duration-500 ${
-                        isOpen ? 'text-black' : 'text-black/20 group-hover:text-black'
+                      <span className="font-mono text-[8px] font-medium text-black/40">0{index + 1}</span>
+                      {/* Categories: Solid Black, No Bold, Green on Hover/Open */}
+                      <h3 className={`text-xl md:text-2xl uppercase tracking-[0.15em] font-medium transition-colors duration-500 ${
+                        isOpen ? 'text-[#828a1c]' : 'text-black group-hover:text-[#828a1c]'
                       }`}>
                         {sector.category}
                       </h3>
                     </div>
-                    {isOpen ? <Minus size={18} strokeWidth={1} /> : <Plus size={18} strokeWidth={1} className="text-black/20 group-hover:text-black" />}
+                    {isOpen ? (
+                      <Minus size={18} strokeWidth={1} className="text-[#828a1c]" />
+                    ) : (
+                      <Plus size={18} strokeWidth={1} className="text-black group-hover:text-[#828a1c]" />
+                    )}
                   </button>
 
                   <AnimatePresence>
@@ -76,10 +88,10 @@ const Footer = () => {
                               to={`/${service.link}`}
                               className="group/link flex items-center justify-between border-b border-black/5 py-2"
                             >
-                              <span className="text-[9px] text-black/50 group-hover:text-black uppercase tracking-[0.2em] font-bold transition-colors">
+                              <span className="text-[10px] text-black group-hover:text-[#828a1c] uppercase tracking-[0.1em] transition-colors">
                                 {service.name}
                               </span>
-                              <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-all" />
+                              <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 text-[#828a1c]" />
                             </Link>
                           ))}
                         </div>
@@ -91,24 +103,22 @@ const Footer = () => {
             })}
           </div>
 
-          {/* RIGHT COLUMN: MAP & CONTACT DETAILS */}
+          {/* RIGHT COLUMN: MAP & CONTACT */}
           <div className="lg:col-span-5 flex flex-col gap-12">
-            {/* BLACK & WHITE MAP */}
-            <div className="w-full h-72 bg-gray-100 overflow-hidden border border-black/10 grayscale contrast-[1.2] invert-[0.05]">
+            <div className="w-full h-72 bg-gray-100 overflow-hidden border border-black/10">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.310651910103!2d77.0655259!3d28.4550868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d191ec4d69357%3A0x633458b68832a87a!2sSector%2044%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.2570023473215!2d77.0694186!3d28.4552467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d191df4108845%3A0xc48c081e7d2e4f0d!2sSector%2044%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                 className="w-full h-full border-0"
                 allowFullScreen="" 
                 loading="lazy"
-                title="Google Maps Location"
+                title="Office Location"
               ></iframe>
             </div>
             
-            {/* CONTACT DETAILS - LARGE FONT SIZES */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
               <div className="space-y-4">
                 <p className="text-black text-[9px] font-black uppercase tracking-[0.5em] border-b border-black pb-2 w-fit">Location</p>
-                <p className="text-[14px] md:text-[15px] uppercase tracking-[0.12em] leading-relaxed font-bold text-black">
+                <p className="text-[14px] uppercase tracking-[0.1em] font-medium text-black leading-relaxed">
                   Plot 44, Sector 44,<br />
                   Institutional Area, Gurgaon,<br />
                   Haryana 122003
@@ -116,9 +126,9 @@ const Footer = () => {
               </div>
               <div className="space-y-4">
                 <p className="text-black text-[9px] font-black uppercase tracking-[0.5em] border-b border-black pb-2 w-fit">Inquiries</p>
-                <div className="text-[14px] md:text-[15px] uppercase tracking-[0.12em] leading-relaxed font-bold flex flex-col gap-2 text-black">
-                  <a href="tel:+919876543210" className="hover:opacity-50 transition-opacity">+91 98765 43210</a>
-                  <a href="mailto:hello@bixbite.in" className="hover:opacity-50 transition-opacity">hello@bixbite.in</a>
+                <div className="text-[14px] uppercase tracking-[0.1em] font-medium flex flex-col gap-2 text-black">
+                  <a href="tel:+919876543210" className="hover:text-[#828a1c] transition-colors">+91 98765 43210</a>
+                  <a href="mailto:hello@bixbite.in" className="hover:text-[#828a1c] transition-colors">hello@bixbite.in</a>
                 </div>
               </div>
             </div>
@@ -130,20 +140,20 @@ const Footer = () => {
           <div className="flex items-center gap-10">
             <span className="text-[9px] font-black uppercase tracking-[0.5em]">Bixbite Innovation Studio © 2026</span>
             <div className="flex gap-5">
-              <Instagram size={14} strokeWidth={1.5} className="cursor-pointer hover:opacity-50" />
-              <Linkedin size={14} strokeWidth={1.5} className="cursor-pointer hover:opacity-50" />
+              <Instagram size={14} className="cursor-pointer hover:text-[#828a1c] transition-colors" />
+              <Linkedin size={14} className="cursor-pointer hover:text-[#828a1c] transition-colors" />
             </div>
           </div>
 
           <div className="flex items-center gap-8 text-[9px] font-black uppercase tracking-[0.5em]">
-            <Link to="/privacy" className="hover:text-black/40 transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-black/40 transition-colors">Terms of Service</Link>
+            <Link to="/privacy" className="hover:text-[#828a1c] transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-[#828a1c] transition-colors">Terms of Service</Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-2 group ml-4"
             >
-              <span className="font-black">Back To Top</span>
-              <div className="w-8 h-8 border border-black rounded-full flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
+              <span className="font-bold group-hover:text-[#828a1c] transition-colors">Back To Top</span>
+              <div className="w-8 h-8 border border-black rounded-full flex items-center justify-center group-hover:bg-[#828a1c] group-hover:border-[#828a1c] group-hover:text-white transition-all">
                 <ArrowUpRight size={14} />
               </div>
             </button>
