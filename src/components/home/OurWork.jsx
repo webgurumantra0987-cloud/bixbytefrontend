@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
-const OurWork = () => {
+const OurWork = () => { 
   const projects = [
     { id: "01", title: "Skyline HQ", cat: "Commercial", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000" },
     { id: "02", title: "The Glass Villa", cat: "Residential", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000" },

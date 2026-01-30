@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Building2 } from 'lucide-react';
+import { herosliderimage, herosliderimage1, herosliderimage2, herosliderimage3, herosliderimage4, herosliderimage5, herosliderimage6, herosliderimage7, herosliderimage8, herosliderimage9 } from '../../image';
 
 const Hero = () => {
   const slides = [
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000",
-    "https://media.istockphoto.com/id/2166310230/photo/a-quiet-luxury-living-room-interior-with-glamour-and-traditional-furniturea-quiet-luxury.webp?a=1&b=1&s=612x612&w=0&k=20&c=Kx8eRjCVMHVaVcCSKYLQVGMfm68Y2k02Ym50TUBB0FU=",
-    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2000",
-    "https://media.istockphoto.com/id/2157083256/photo/modern-living-room-interior-with-white-sofa-against-the-wood-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=FwSat6lWcfY2K3ZhZ49p3IzwVf2t8KKFZPMby5dimIE="
+
+    herosliderimage,
+    herosliderimage1,
+    herosliderimage2,
+    herosliderimage3,
+    herosliderimage4,
+    herosliderimage5,
+    herosliderimage6,
+    herosliderimage7,
+    herosliderimage8, 
+    herosliderimage9
   ];
 
   const [current, setCurrent] = useState(0);

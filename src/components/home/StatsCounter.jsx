@@ -27,47 +27,66 @@ const stats = [
 export const StatsCounter = () => {
   return (
     <section 
-      className="py-24 bg-[#0f1108]" 
-      aria-label="Bixbite Innovation Studio Achievements"
+      className="py-32 bg-[#839705] relative overflow-hidden" 
+      aria-label="Bixbite Achievements"
     >
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-        <h2 className="sr-only">Our Architectural Impact and Interior Design Track Record</h2>
+      {/* Subtle background texture/watermark */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none select-none flex items-center justify-center">
+        <span className="text-[20vw] font-black text-white leading-none uppercase tracking-tighter">
+          Studio
+        </span>
+      </div>
+
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative z-10">
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-12">
           {stats.map((stat, i) => (
             <motion.div 
               key={i} 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.8 }}
-              className="text-center lg:text-left"
-              /* Removed the 'group' class to stop hover-based scaling */
+              transition={{ delay: i * 0.1, duration: 1, ease: "easeOut" }}
+              className="group"
             >
-              {/* Value with Brand Color - Static and Bold */}
-              <p className="text-[#828a1c] text-5xl md:text-7xl font-serif italic mb-3 tracking-tighter">
+              {/* Index - Small and clean */}
+              <span className="text-black/40 font-mono text-[9px] mb-4 block group-hover:text-white transition-colors">
+                // 0{i + 1}
+              </span>
+
+              {/* Value: Off-White for high visibility against green */}
+              <p className="text-[#FAF9F6] text-6xl md:text-7xl lg:text-8xl font-serif italic mb-6 tracking-tighter leading-none transition-transform duration-500 group-hover:-translate-y-2">
                 {stat.value}
               </p>
               
-              {/* SEO Optimized Label */}
-              <div className="space-y-1">
-                <p className="text-white text-[10px] font-black uppercase tracking-[0.4em] leading-tight">
+              {/* Labels: Solid Black for grounding */}
+              <div className="space-y-2">
+                <p className="text-black text-[11px] font-black uppercase tracking-[0.4em] leading-tight">
                   {stat.label}
                 </p>
-                {/* Contextual Sub-label */}
-                <p className="text-[#6b4411] text-[8px] font-bold uppercase tracking-[0.3em] opacity-80">
-                  {stat.suffix}
-                </p>
+                <div className="flex items-center gap-3">
+                   <div className="h-[1px] w-6 bg-black/20" />
+                   <p className="text-black/60 text-[9px] font-bold uppercase tracking-[0.3em]">
+                     {stat.suffix}
+                   </p>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* SEO Contextual Paragraph */}
-        <div className="mt-16 pt-10 border-t border-white/5">
-          <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em] max-w-4xl leading-relaxed">
-            As a leading **Innovation Studio**, Bixbite has transformed over **1.2 million square feet** of space into **sustainable luxury** environments. Our portfolio spans **top-tier residential interiors** and **modern commercial architecture** across **12 major cities**, powered by a team of **45+ elite design professionals**.
+        {/* Bottom SEO Text - Clean Black & White balance */}
+        <div className="mt-24 pt-10 border-t border-black/10 flex flex-col md:flex-row justify-between items-start gap-8">
+          <p className="text-black/70 text-[10px] uppercase tracking-[0.3em] max-w-4xl leading-relaxed">
+            Leading the <strong className="text-white">Innovation Frontier</strong> in sustainable luxury. 
+            Bixbite manages <strong className="text-white">1.2 million sq.ft</strong> across 
+            <strong className="text-black"> 12 major cities</strong>.
           </p>
+          <div className="shrink-0">
+             <span className="inline-block px-4 py-2 border border-black/20 text-black text-[9px] font-black uppercase tracking-widest">
+               2026 Archive
+             </span>
+          </div>
         </div>
       </div>
     </section>
